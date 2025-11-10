@@ -7,13 +7,13 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-US"
+locale                   : "zh-CN"
 site_theme               : "default" # Currently available options are "default", "air"
-title                    : "Zongyang Qiu"
+title                    : "Zongyang (Zane) Qiu"
 title_separator          : "-"
 name                     : &name "Zongyang Qiu"
 description              : &description "Zongyang Qiu's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
-url                      : https://academicpages.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
+url                      : https://zane-zyqiu.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Zane-ZYQiu/Zane-ZYQiu.github.io"
@@ -24,11 +24,11 @@ repository               : "Zane-ZYQiu/Zane-ZYQiu.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Zongyang (Zane) Qiu"
   pronouns         : "he/him"
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "Final-year Undergraduate Student at Fudan University, majoring in Computer Science. Passionate about AI, Computer Vision, and Computer Graphics. "
   location         : "Shanghai, China"
-  employer         : "Red Brick University"
+  employer         : "Fudan University"
   uri              : "zane-zyqiu.github.io"
   email            : "zane.zy.qiu@gmail.com" 
 
