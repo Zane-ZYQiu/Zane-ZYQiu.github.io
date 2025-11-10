@@ -25,7 +25,7 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Your Sidebar Name"
-  pronouns         : "he/his  
+  pronouns         : "he/him"
   bio              : "Short biography for the left-hand sidebar"
   location         : "Shanghai, China"
   employer         : "Red Brick University"
@@ -135,7 +135,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter
+  username               : &twitter ""
 facebook:
   username               :
   app_id                 :
