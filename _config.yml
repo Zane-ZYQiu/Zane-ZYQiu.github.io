@@ -24,9 +24,9 @@ repository               : "Zane-ZYQiu/Zane-ZYQiu.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Zongyang (Zane) Qiu"
+  name             : "Zongyang Qiu"
   pronouns         : "he/him"
-  bio              : "Final-year Undergraduate Student at Fudan University, majoring in Computer Science. Passionate about AI, Computer Vision, and Computer Graphics. "
+  bio              : "Final-year Undergraduate Student at Fudan University, majoring in Computer Science."
   location         : "Shanghai, China"
   employer         : "Fudan University"
   uri              : "zane-zyqiu.github.io"
@@ -38,23 +38,24 @@ author:
   googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            : "https://orcid.org/yourorcidurl"
+  orcid            : "https://orcid.org/0009-0001-5159-2128"
   semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : # URL
   researchgate     : # URL
   scopus           : # URL
+  rednote          : "https://www.xiaohongshu.com/user/profile/615696020000000002022076"
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : "Zane-ZYQiu"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
   artstation       : # Username
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # Username # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
