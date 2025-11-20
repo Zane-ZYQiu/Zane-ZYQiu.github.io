@@ -1,84 +1,125 @@
 {% include base_path %}
 
 {% if post.header.teaser %}
-  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% capture teaser %}{{ post.header.teaser }}{% endcapture %}
 {% else %}
-  {% assign teaser = site.teaser %}
+{% assign teaser = site.teaser %}
 {% endif %}
 
 {% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
 {% else %}
-  {% assign title = post.title %}
+{% assign title = post.title %}
 {% endif %}
 
-<div class="{{ include.type | default: "list" }}__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    {% if include.type == "grid" and teaser %}
-      <div class="archive__item-teaser">
-        <img src=
-          {% if teaser contains "://" %}
-            "{{ teaser }}"
-          {% else %}
-            "{{ teaser | prepend: "/images/" | prepend: base_path }}"
-          {% endif %}
-          alt="">
-      </div>
-    {% endif %}
+<div class="{{ include.type | default: " list" }}__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork"
+    style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
 
-    <h2 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-      {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+    <!-- Teaser Image -->
+    <div class="archive__item-teaser" style="flex: 0 0 35%; max-width: 250px;">
+      <img src={% if teaser contains "://" %} "{{ teaser }}" {% else %} "{{ teaser | prepend: " /images/" | prepend:
+        base_path }}" {% endif %} alt=""
+        style="width: 100%; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); object-fit: cover;">
+    </div>
+
+    <!-- Content -->
+    <div class="archive__item-content" style="flex: 1;">
+      <h2 class="archive__item-title" itemprop="headline" style="margin-top: 0; font-size: 1.2em; margin-bottom: 5px;">
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink" style="text-decoration: none; color: inherit;">{{ title
+          }}</a>
+      </h2>
+
+      <!-- Authors -->
+      {% if post.authors %}
+      <p class="archive__item-authors" style="margin: 5px 0; font-size: 0.95em; color: #555;">{{ post.authors }}</p>
       {% endif %}
-    </h2>
-    
-    {% if post.read_time %}
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-    {% endif %}
 
-        {% if post.collection == 'teaching' %}
-          <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif post.collection == 'publications' %}
-          <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif post.date %}
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
+      <!-- Venue -->
+      {% if post.venue %}
+      <p class="archive__item-venue" style="margin: 5px 0; font-size: 0.9em; font-style: italic; font-weight: 600;">{{
+        post.venue }}</p>
+      {% elsif post.date %}
+      <p class="archive__item-venue" style="margin: 5px 0; font-size: 0.9em; font-style: italic;">{{ post.date | date:
+        "%Y" }}</p>
+      {% endif %}
+
+      <!-- Buttons -->
+      <div class="archive__item-links" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">
+        <!-- Abstract Button -->
+        <a href="javascript:void(0)" class="btn btn--primary btn--small"
+          onclick="toggleBlock('{{ post.url | slugify }}-abstract')">Abstract</a>
+
+        <!-- Arxiv Link -->
+        {% if post.arxiv %}
+        <a href="{{ post.arxiv }}" class="btn btn--primary btn--small">ArXiV</a>
         {% endif %}
 
-    {% if post.excerpt and site.read_more != 'enabled' %}
-    <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
-    {% elsif post.excerpt and site.read_more == 'enabled' %}
-    <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p></p>
-    {% endif %}
-    
-    {% if post.citation and post.paperurl and post.slidesurl and post.bibtexurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">Download Paper</a> | <a href="{{ post.slidesurl }}">Download Slides</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
-    {% elsif post.citation and post.paperurl and post.slidesurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">Download Paper</a> | <a href="{{ post.slidesurl }}">Download Slides</a></p>
-    {% elsif post.citation and post.paperurl and post.bibtexurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">Download Paper</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
-    {% elsif post.citation and post.paperurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">Download Paper</a></p>
-    {% elsif post.citation and post.slidesurl and post.bibtexurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.slidesurl }}">Download Slides</a> | <a href="{{ post.bibtexurl}}">Download Bibtex</a></p>
-    {% elsif post.citation and post.slidesurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.slidesurl }}">Download Slides</a></p>
-    {% elsif post.citation and post.bibtexurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
-    {% elsif post.citation %}
-      <p>Recommended citation: {{ post.citation }}</p>
-    {% elsif post.paperurl and post.bibtexurl %}
-      <p><a href=" {{ post.paperurl }} ">Download Paper</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
-    {% elsif post.paperurl %}
-      <p><a href=" {{ post.paperurl }} ">Download Paper</a></p>
-    {% elsif post.slidesurl and post.bibtexurl %}
-      <p><a href="{{ post.slidesurl }}">Download Slides</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
-    {% elsif post.slidesurl %}
-      <p><a href="{{ post.slidesurl }}">Download Slides</a></p>
-    {% elsif post.bibtexurl %}
-      <p><a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
-    {% endif %}
+        <!-- Project Page Link -->
+        {% if post.project_page %}
+        <a href="{{ post.project_page }}" class="btn btn--primary btn--small">Project Page</a>
+        {% endif %}
 
+        <!-- PDF/Paper Link -->
+        {% if post.paperurl %}
+        <a href="{{ post.paperurl }}" class="btn btn--primary btn--small">Paper</a>
+        {% endif %}
+
+        <!-- Bibtex Button -->
+        {% if post.bibtex %}
+        <a href="javascript:void(0)" class="btn btn--primary btn--small"
+          onclick="toggleBlock('{{ post.url | slugify }}-bibtex')">Bibtex</a>
+        {% endif %}
+      </div>
+
+      <!-- Collapsible Blocks -->
+      <div id="{{ post.url | slugify }}-abstract" class="archive__item-abstract hidden-block"
+        style="display: none; margin-top: 10px; padding: 10px; background: #f4f4f4; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em; line-height: 1.5;">
+        {{ post.content | markdownify }}
+      </div>
+
+      {% if post.bibtex %}
+      <div id="{{ post.url | slugify }}-bibtex" class="archive__item-bibtex hidden-block"
+        style="display: none; margin-top: 10px; padding: 10px; background: #f4f4f4; border: 1px solid #ddd; border-radius: 5px; font-size: 0.85em; font-family: monospace; white-space: pre-wrap;">
+        {{ post.bibtex }}</div>
+      {% endif %}
+
+    </div>
   </article>
 </div>
+
+<script>
+  if (typeof toggleBlock !== 'function') {
+    function toggleBlock(id) {
+      var x = document.getElementById(id);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  }
+</script>
+
+<style>
+  .btn--small {
+    padding: 4px 10px;
+    font-size: 0.85em;
+    border-radius: 4px;
+    text-decoration: none !important;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff !important;
+    border: none;
+    transition: background-color 0.3s;
+  }
+
+  .btn--small:hover {
+    background-color: #555;
+  }
+
+  /* Ensure buttons look good */
+  .archive__item-links a {
+    display: inline-block;
+  }
+</style>
