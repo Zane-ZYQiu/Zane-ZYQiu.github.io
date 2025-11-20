@@ -1,5 +1,6 @@
 {% include base_path %}
 
-{%- comment -%}
-  Footer content intentionally removed per customization request.
-{%- endcomment -%}
+<div class="page__footer-copyright">
+  &copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}<br />
+  Site last updated {{ "now" | date: '%Y-%m-%d' }}
+</div>
