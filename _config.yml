@@ -27,6 +27,7 @@ author:
   name             : "Zongyang Qiu"
   pronouns         : "he/him"
   bio              : "Final-year Undergraduate Student at Fudan University, majoring in Computer Science."
+  motto            : "Seek, and you will find. (Matthew 7:7)"
   location         : "Shanghai, China"
   employer         : "Fudan University"
   uri              : "zane-zyqiu.github.io"
@@ -35,7 +36,7 @@ author:
   # Academic websites
   academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  googlescholar    : "https://scholar.google.com/citations?user=-nB1dcoAAAAJ&hl"
   inspire-hep      : # URL
   impactstory      : # URL
   orcid            : "https://orcid.org/0009-0001-5159-2128"
