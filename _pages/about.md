@@ -20,3 +20,8 @@ I am deeply passionate about Computer Vision, Computer Graphics, and HCI. My cur
 {% for post in site.publications reversed %}
   {% include archive-single.html %}
 {% endfor %}
+
+## Service
+
+- Reviewer, AAAI 2026
+- Reviewer, IEEE Transactions on Affective Computing
