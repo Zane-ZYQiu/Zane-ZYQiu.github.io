@@ -12,7 +12,7 @@ redirect_from:
 Education
 ======
 * **Fudan University**, BS in Computer Science (Sept 2022 – June 2026)
-  * GPA: 3.73/4.0, National Scholarship (2024 – 2025, Top 1 of the school)
+  * GPA: 3.73/4.0, National Scholarship (2024 – 2025)
   * Coursework: Programming (Grade: A), Artificial Intelligence (Honors, Grade: A), Digital Image Processing (Grade: A), Set and Graph Theory (Honors, Grade: A)
 * **HKUST**, Exchange Program on Bachelor’s level (Aug 2024 – Dec 2024)
   * Coursework: Design and Analysis of Algorithms, Computer Graphics, Probability
@@ -33,4 +33,4 @@ Skills
 ======
 * **Programming Languages**: Python, C++, C, SQL
 * **Technologies**: PyTorch, Deep Learning, LaTeX, Academic English (TOEFL 103), Photoshop & Premiere
-* **Research Interests**: Video Generation, 3D Vision, HCI
+* **Research Interests**: Video Generation, 3D Vision, MLLM
