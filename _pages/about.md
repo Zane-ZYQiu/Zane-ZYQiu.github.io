@@ -11,7 +11,7 @@ Hello, I'm Zongyang Qiu, a final-year Computer Science undergraduate at [Fudan U
 
 Currently, I am a resarch intern at [Alpha-MLLM Group,](https://github.com/Alpha-VLLM) Shanghai AI Lab. Prior to that, I worked with [Dr. Zeyu Wang](https://cislab.hkust-gz.edu.cn/members/zeyu-wang) at CIS Lab, HKUST(GZ), and with [Prof. Wenhan Luo](https://whluo.github.io) at C4 Group, HKUST.
 
-I am deeply passionate about Computer Vision, Computer Graphics, and HCI. My current research focuses on generative AI, with a specific interest in video generation and dynamic 4D avatar creation.
+I am deeply passionate about extensive topics about Computer Vision and Computer Graphics, and I hope my research can contribute to human life in the digital world. My current research focuses on multimodal learning and 3D vision.
 
 ## Publications
 
