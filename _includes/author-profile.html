@@ -31,8 +31,14 @@
                               aria-hidden="true"></i>{{ author.location }}</li>
                   {% endif %}
                   {% if author.employer %}
-                  <li class="author__desktop"><i class="fas fa-fw fa-building-columns icon-pad-right"
-                              aria-hidden="true"></i>{{ author.employer }}</li>
+                  <li class="author__desktop">
+                    {% if author.employer_url %}
+                    <a href="{{ author.employer_url }}"><i class="fas fa-fw fa-building-columns icon-pad-right"
+                              aria-hidden="true"></i>{{ author.employer }}</a>
+                    {% else %}
+                    <i class="fas fa-fw fa-building-columns icon-pad-right" aria-hidden="true"></i>{{ author.employer }}
+                    {% endif %}
+                  </li>
                   {% endif %}
                   {% if author.email %}
                   <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope icon-pad-right"

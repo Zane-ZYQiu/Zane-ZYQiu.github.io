@@ -29,7 +29,8 @@ author:
   bio              : "A final-year undergraduate student at Fudan University, majoring in Computer Science."
   motto            : "Seek, and you will find. (Matthew 7:7)"
   location         :
-  employer         : '<a href="https://www.fudan.edu.cn/en/">Fudan University</a>'
+  employer         : "Fudan University"
+  employer_url     : "https://www.fudan.edu.cn/en/"
   uri              : "zane-zyqiu.github.io"
   email            : "zane.zy.qiu@gmail.com" 
 
