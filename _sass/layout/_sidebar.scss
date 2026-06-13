@@ -39,7 +39,7 @@
   }
 
   @include breakpoint($x-large) {
-    max-width: $sidebar-link-max-width;
+    max-width: 360px;
     padding-right: 0;
   }
 
@@ -103,8 +103,8 @@
   }
 
   img {
-    max-width: 175px;
-    border-radius: 0;
+    max-width: 340px;
+    border-radius: 6px;
 
     @include breakpoint($large) {
       padding: 5px;

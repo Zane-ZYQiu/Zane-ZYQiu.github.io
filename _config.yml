@@ -23,7 +23,7 @@ repository               : "Zane-ZYQiu/Zane-ZYQiu.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "AI_profile.png"
+  avatar           : "graduation.jpg"
   name             : "Zongyang Qiu"
   pronouns         : "he/him"
   bio              : "A final-year undergraduate student at Fudan University, majoring in Computer Science."
@@ -74,7 +74,7 @@ author:
   steam            : # Username
   telegram         : # URL
   tumblr           : # Username
-  twitter          : "Lilcabbageee"
+  twitter          : "zanezyqiu"
   vine             : # Username
   weibo            : # Username
   wikipedia        : # Username
