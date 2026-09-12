@@ -69,6 +69,11 @@
         <a href="{{ post.paperurl }}" class="btn btn--primary btn--small">Paper</a>
         {% endif %}
 
+        <!-- Code Link -->
+        {% if post.code %}
+        <a href="{{ post.code }}" class="btn btn--primary btn--small">Code</a>
+        {% endif %}
+
         <!-- Bibtex Button -->
         {% if post.bibtex %}
         <a href="javascript:void(0)" class="btn btn--primary btn--small"
