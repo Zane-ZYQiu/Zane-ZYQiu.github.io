@@ -1,14 +1,14 @@
 {
   "basics": {
-    "name": "Your Sidebar Name",
-    "email": "none@example.org",
+    "name": "Zongyang Qiu",
+    "email": "zane.zy.qiu@gmail.com",
     "phone": "",
-    "website": "https://academicpages.github.io",
-    "summary": "Currently employed at Red Brick University. Short biography for the left-hand sidebar",
+    "website": "https://zane-zyqiu.github.io",
+    "summary": "Currently employed at HKUST(GZ). An MPhil student at HKUST(GZ). B.S. in Computer Science from Fudan University.",
     "location": {
       "address": "",
       "postalCode": "",
-      "city": "Earth",
+      "city": "",
       "countryCode": "US",
       "region": ""
     },
@@ -16,47 +16,48 @@
       {
         "network": "Google Scholar",
         "username": "",
-        "url": "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+        "url": "https://scholar.google.com/citations?user=-nB1dcoAAAAJ&hl"
       },
       {
         "network": "ORCID",
         "username": "",
-        "url": "https://orcid.org/yourorcidurl"
+        "url": "https://orcid.org/0009-0001-5159-2128"
       },
       {
         "network": "GitHub",
-        "username": "academicpages",
-        "url": "https://github.com/academicpages"
+        "username": "Zane-ZYQiu",
+        "url": "https://github.com/Zane-ZYQiu"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "zongyang-qiu-487aba380",
+        "url": "https://www.linkedin.com/in/zongyang-qiu-487aba380"
+      },
+      {
+        "network": "Twitter",
+        "username": "zanezyqiu",
+        "url": "https://twitter.com/zanezyqiu"
       }
     ]
   },
   "work": [],
   "education": [
     {
-      "institution": "GitHub University",
-      "area": "Ph.D in Version Control Theory",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2018",
+      "institution": "HKUST(GZ)",
+      "area": "Artificial Intelligence",
+      "studyType": "MPhil",
+      "startDate": "2026-09",
+      "endDate": "",
       "gpa": null,
       "courses": []
     },
     {
-      "institution": "GitHub University",
-      "area": "M.S. in Jekyll",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2014",
-      "gpa": null,
-      "courses": []
-    },
-    {
-      "institution": "GitHub University",
-      "area": "B.S. in GitHub",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2012",
-      "gpa": null,
+      "institution": "Fudan University",
+      "area": "Computer Science",
+      "studyType": "BS",
+      "startDate": "2022-09",
+      "endDate": "2026-06",
+      "gpa": "3.73",
       "courses": []
     }
   ],
@@ -92,6 +93,41 @@
       "releaseDate": "2024-02-17",
       "website": "https://academicpages.github.io/files/paper3.pdf",
       "summary": "This paper is about fixing template issue #693."
+    },
+    {
+      "name": "Paper Title Number 5, with math $$E=mc^2$$",
+      "publisher": "GitHub Journal of Bugs",
+      "releaseDate": "2024-02-17",
+      "website": "https://academicpages.github.io/files/paper3.pdf",
+      "summary": "This paper is about a famous math equation, $$E=mc^2$$"
+    },
+    {
+      "name": "EmoVid: A Multimodal Emotion Video Dataset for Emotion-Centric Video Understanding and Generation",
+      "publisher": "AAAI 2026 (Oral)",
+      "releaseDate": "2025-11-20",
+      "website": "",
+      "summary": "We introduce EmoVid, the first multimodal, emotion-annotated video dataset specifically designed for creative media. It enables emotion-conditioned video generation by fine-tuning the Wan2.1 model."
+    },
+    {
+      "name": "EmoSpace: Fine-Grained Emotion Prototype Learning for Immersive Affective Content Generation",
+      "publisher": "arXiv preprint",
+      "releaseDate": "2026-02-16",
+      "website": "",
+      "summary": "EmoSpace learns dynamic, interpretable emotion prototypes through vision-language alignment, enabling fine-grained emotional control for immersive VR content generation, including emotional image outpainting, stylized generation, and emotional panorama generation."
+    },
+    {
+      "name": "Where a New Concept Must Enter: Entry Point Gates Cross-Task Usability in Unified Multimodal Models",
+      "publisher": "arXiv preprint",
+      "releaseDate": "2026-08-18",
+      "website": "",
+      "summary": "We isolate generation-to-understanding and understanding-to-generation transfer in unified multimodal models by binding a novel visual concept through exactly one task direction, finding that cross-task usability is governed by where the binding enters the shared computation."
+    },
+    {
+      "name": "InternLumina-U2: A Multi-Codebook Diffusion Large Language Model for Omni-Visual Understanding and Image Generation",
+      "publisher": "Technical report (in preparation)",
+      "releaseDate": "2026-09-12",
+      "website": "",
+      "summary": "InternLumina-U2 is a unified diffusion large language model that shares a single MoE diffusion backbone with a multi-codebook visual tokenizer for text question answering, image understanding and editing, image generation, video understanding, and 3D understanding."
     }
   ],
   "presentations": [

@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm Zongyang Qiu, a final-year Computer Science undergraduate at [Fudan University,](https://www.fudan.edu.cn/en) and an incoming Mphil student at [HKUST(GZ)](https://www.hkust-gz.edu.cn), advised by [Prof. Hui Xiong.](https://hkustai.github.io/)
+I'm Zongyang Qiu, an MPhil student at [HKUST(GZ)](https://www.hkust-gz.edu.cn), advised by [Prof. Hui Xiong.](https://hkustai.github.io/) I received my B.S. degree in Computer Science from [Fudan University.](https://www.fudan.edu.cn/en)
 
 Currently, I am a resarch intern at [Alpha-MLLM Group,](https://github.com/Alpha-VLLM) Shanghai AI Lab, focusing on building the next-generation DLLM and Visual Agents. Prior to that, I worked with [Dr. Zeyu Wang](https://cislab.hkust-gz.edu.cn/members/zeyu-wang) at CIS Lab, HKUST(GZ), and with [Prof. Wenhan Luo](https://whluo.github.io) at C4 Group, HKUST.
 

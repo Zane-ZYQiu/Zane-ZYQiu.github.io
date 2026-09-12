@@ -11,6 +11,8 @@ redirect_from:
 
 Education
 ======
+* **HKUST(GZ)**, MPhil in Artificial Intelligence (Sept 2026 – Present)
+  * Advisor: Prof. Hui Xiong
 * **Fudan University**, BS in Computer Science (Sept 2022 – June 2026)
   * GPA: 3.73/4.0, National Scholarship (2024 – 2025)
   * Coursework: Programming (Grade: A), Artificial Intelligence (Honors, Grade: A), Digital Image Processing (Grade: A), Set and Graph Theory (Honors, Grade: A)
