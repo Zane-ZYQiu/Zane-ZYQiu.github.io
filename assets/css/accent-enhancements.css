@@ -29,7 +29,10 @@ html[data-theme="dark"] {
   pointer-events: none;
 }
 
-.masthead,
+.masthead {
+  z-index: 10;
+}
+
 #main,
 .page,
 .site-footer {
@@ -64,7 +67,7 @@ body::before {
 /* --- Sidebar / author profile ------------------------------------------ */
 
 .sidebar .author__avatar img {
-  border-radius: 50%;
+  border-radius: 8px;
   box-shadow: 0 6px 20px rgba(var(--accent-1-rgb), 0.25);
   border: 3px solid var(--global-bg-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -269,7 +272,7 @@ body::before {
 .paper-box {
   display: flex;
   gap: 1.4rem;
-  align-items: stretch;
+  align-items: flex-start;
   margin-bottom: 1.4rem;
   padding: 1.1rem;
   border-radius: 12px;
@@ -307,6 +310,8 @@ body::before {
   position: relative;
   flex: 0 0 34%;
   max-width: 260px;
+  height: 180px;
+  align-self: flex-start;
   border-radius: 8px;
   overflow: hidden;
   background: rgba(var(--accent-1-rgb), 0.05);
