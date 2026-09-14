@@ -4,33 +4,49 @@
 # links. Removing a link prevents it from showing in the header, but does not
 # prevent it from being included in the site.
 #
-# NOTE that only one of the CV options should be selected, the first is for the
-#      Markdown formatted page while the second is generated using JSON.
+# The site is single-page: these all point to anchors on the homepage rather
+# than separate pages (the underlying standalone pages still exist at their
+# permalinks, just unlinked from the header).
 
 main:
+  - title: "About Me"
+    url: /#about-me
+
+  - title: "News"
+    url: /#news
+
+  - title: "Education"
+    url: /#education
+
   - title: "Publications"
-    url: /publications/
+    url: /#publications
+
+  - title: "Awards"
+    url: /#awards-and-honors
+
+  - title: "Skills"
+    url: /#skills
 
   - title: "Service"
-    url: /service/
+    url: /#service
 
   # - title: "Talks"
-  #   url: /talks/    
+  #   url: /talks/
 
   # - title: "Teaching"
-  #   url: /teaching/    
-    
+  #   url: /teaching/
+
   # - title: "Portfolio"
   #   url: /portfolio/
-        
+
   # - title: "Blog Posts"
   #   url: /year-archive/
 
-  - title: "CV"
-    url: /cv/
-    
+  # - title: "CV"
+  #   url: /cv/
+
   # - title: "CV"
   #   url: /cv-json/
-    
+
   # - title: "Guide"
   #   url: /markdown/
