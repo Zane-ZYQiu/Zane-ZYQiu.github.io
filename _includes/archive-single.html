@@ -13,83 +13,84 @@
 {% endif %}
 
 <div class="{{ include.type | default: " list" }}__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork"
-    style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
+  <article class="archive__item paper-box" itemscope itemtype="http://schema.org/CreativeWork">
 
     <!-- Teaser Image -->
-    <div class="archive__item-teaser" style="flex: 0 0 35%; max-width: 250px;">
+    <div class="paper-box-image">
+      {% if teaser %}
       {% if teaser contains "://" %}
       {% assign teaser_url = teaser %}
       {% else %}
       {% assign teaser_url = teaser | prepend: "/images/" | prepend: base_path %}
       {% endif %}
-      <img src="{{ teaser_url }}" alt=""
-        style="width: 100%; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); object-fit: cover;">
+      {% if post.venue %}
+      <span class="badge">{{ post.venue }}</span>
+      {% endif %}
+      <img src="{{ teaser_url }}" alt="">
+      {% endif %}
     </div>
 
     <!-- Content -->
-    <div class="archive__item-content" style="flex: 1;">
-      <h2 class="archive__item-title" itemprop="headline" style="margin-top: 0; font-size: 1.2em; margin-bottom: 5px;">
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink" style="text-decoration: none; color: inherit;">{{ title
-          }}</a>
+    <div class="paper-box-text">
+      <h2 class="archive__item-title" itemprop="headline">
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
       </h2>
 
       <!-- Authors -->
       {% if post.authors %}
-      <p class="archive__item-authors" style="margin: 5px 0; font-size: 0.95em; color: #555;">{{ post.authors }}</p>
+      {% capture self_author_wrapped %}<span class="self-author">{{ site.author.name }}</span>{% endcapture %}
+      <p class="archive__item-authors">{{ post.authors | replace: site.author.name, self_author_wrapped }}</p>
       {% endif %}
 
       <!-- Venue -->
       {% if post.venue %}
-      <p class="archive__item-venue" style="margin: 5px 0; font-size: 0.9em; font-style: italic; font-weight: 600;">{{
-        post.venue }}</p>
+      <p class="archive__item-venue">{{ post.venue }}</p>
       {% elsif post.date %}
-      <p class="archive__item-venue" style="margin: 5px 0; font-size: 0.9em; font-style: italic;">{{ post.date | date:
-        "%Y" }}</p>
+      <p class="archive__item-venue">{{ post.date | date: "%Y" }}</p>
       {% endif %}
 
       <!-- Buttons -->
-      <div class="archive__item-links" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">
+      <div class="archive__item-links">
         <!-- Abstract Button -->
-        <a href="javascript:void(0)" class="btn btn--primary btn--small"
+        <a href="javascript:void(0)" class="btn-outline-accent"
           onclick="toggleBlock('{{ post.url | slugify }}-abstract')">Abstract</a>
 
         <!-- Arxiv Link -->
         {% if post.arxiv %}
-        <a href="{{ post.arxiv }}" class="btn btn--primary btn--small">ArXiV</a>
+        <a href="{{ post.arxiv }}" class="btn-accent">ArXiV</a>
         {% endif %}
 
         <!-- Project Page Link -->
         {% if post.project_page %}
-        <a href="{{ post.project_page }}" class="btn btn--primary btn--small">Project Page</a>
+        <a href="{{ post.project_page }}" class="btn-accent">Project Page</a>
         {% endif %}
 
         <!-- PDF/Paper Link -->
         {% if post.paperurl %}
-        <a href="{{ post.paperurl }}" class="btn btn--primary btn--small">Paper</a>
+        <a href="{{ post.paperurl }}" class="btn-accent">Paper</a>
         {% endif %}
 
         <!-- Code Link -->
         {% if post.code %}
-        <a href="{{ post.code }}" class="btn btn--primary btn--small">Code</a>
+        <a href="{{ post.code }}" class="btn-accent">Code</a>
         {% endif %}
 
         <!-- Bibtex Button -->
         {% if post.bibtex %}
-        <a href="javascript:void(0)" class="btn btn--primary btn--small"
+        <a href="javascript:void(0)" class="btn-outline-accent"
           onclick="toggleBlock('{{ post.url | slugify }}-bibtex')">Bibtex</a>
         {% endif %}
       </div>
 
       <!-- Collapsible Blocks -->
       <div id="{{ post.url | slugify }}-abstract" class="archive__item-abstract hidden-block"
-        style="display: none; margin-top: 10px; padding: 10px; background: #f4f4f4; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em; line-height: 1.5;">
+        style="display: none; margin-top: 10px; padding: 10px; font-size: 0.9em; line-height: 1.5;">
         {{ post.content | markdownify }}
       </div>
 
       {% if post.bibtex %}
       <div id="{{ post.url | slugify }}-bibtex" class="archive__item-bibtex hidden-block"
-        style="display: none; margin-top: 10px; padding: 10px; background: #f4f4f4; border: 1px solid #ddd; border-radius: 5px; font-size: 0.85em; font-family: monospace; white-space: pre-wrap;">
+        style="display: none; margin-top: 10px; padding: 10px; font-size: 0.85em; font-family: monospace; white-space: pre-wrap;">
         {{ post.bibtex }}</div>
       {% endif %}
 
@@ -109,26 +110,3 @@
     }
   }
 </script>
-
-<style>
-  .btn--small {
-    padding: 4px 10px;
-    font-size: 0.85em;
-    border-radius: 4px;
-    text-decoration: none !important;
-    cursor: pointer;
-    background-color: #333;
-    color: #fff !important;
-    border: none;
-    transition: background-color 0.3s;
-  }
-
-  .btn--small:hover {
-    background-color: #555;
-  }
-
-  /* Ensure buttons look good */
-  .archive__item-links a {
-    display: inline-block;
-  }
-</style>
