@@ -70,7 +70,7 @@ Defined in `_config.yml` under `collections`. Each item is a Markdown file whose
 - `_talks/` → `/talks/:path/` — uses `layout: talk` (`_layouts/talk.html`) by default.
 - `_portfolio/`, `_teaching/` — analogous.
 - `_posts/` → blog posts, surfaced via `/year-archive/`.
-- `_pages/` — standalone pages. The landing page is `_pages/about.md` (permalink `/`), which also inlines the publication list via a Liquid loop over `site.publications`.
+- `_pages/` — standalone pages. The landing page is `_pages/about.html` (permalink `/`), a single-page site using the standalone `_layouts/homepage.html` layout (its own `assets/css/homepage.css` + `assets/js/homepage.js`, not the theme's `main.css`). It inlines the publication list by looping over `site.publications` and rendering each with `_includes/paper-card.html`. Top-nav anchors come from `_data/navigation.yml` and must match the section ids in `about.html`.
 
 Site-wide `defaults:` in `_config.yml` set the default `layout` and sidebar (`author_profile: true`) per collection; individual files can override via front matter.
 

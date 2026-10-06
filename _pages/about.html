@@ -1,0 +1,199 @@
+---
+permalink: /
+layout: homepage
+title: "Zongyang (Zane) Qiu 「邱宗扬」"
+brand: "Zane's homepage"
+redirect_from:
+  - /about/
+  - /about.html
+---
+{% include base_path %}
+
+<section class="section panel reveal" id="intro">
+  <div class="profile-grid">
+    <div class="profile-copy">
+      <div class="profile-heading">
+        <h1 class="profile-name">Zongyang (Zane) Qiu<span class="name-sep">|</span>邱宗扬</h1>
+        <p class="profile-meta">MPhil Student in Artificial Intelligence @ HKUST(GZ)</p>
+        <p class="profile-meta">zane.zy.qiu [at] gmail.com</p>
+      </div>
+
+      <p>
+        I'm Zongyang Qiu, an MPhil student at
+        <a href="https://www.hkust-gz.edu.cn" target="_blank" rel="noreferrer">HKUST(GZ)</a>,
+        advised by <a href="https://hkustai.github.io/" target="_blank" rel="noreferrer">Prof. Hui Xiong</a>,
+        and co-advised by <a href="https://cislab.hkust-gz.edu.cn/members/zeyu-wang/" target="_blank" rel="noreferrer">Prof. Zeyu Wang</a>.
+        I received my B.S. degree in Computer Science from
+        <a href="https://www.fudan.edu.cn/en" target="_blank" rel="noreferrer">Fudan University</a>.
+      </p>
+      <p>
+        Currently, I am a student researcher at
+        <a href="https://www.sii.edu.cn/" target="_blank" rel="noreferrer">Shanghai Innovation Institute (SII)</a>,
+        supervised by <a href="https://sunyt32.github.io/" target="_blank" rel="noreferrer">Yutao Sun</a>.
+        Previously, I was a research intern at
+        <a href="https://github.com/InternLM" target="_blank" rel="noreferrer">InternLM Group</a>,
+        Shanghai AI Lab, supervised by
+        <a href="https://scholar.google.com/citations?user=9WhK1y4AAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Dr. Bin Fu</a>,
+        focusing on building the next-generation DLLM and Visual Agents. Before that, I worked with
+        <a href="https://cislab.hkust-gz.edu.cn/members/zeyu-wang" target="_blank" rel="noreferrer">Dr. Zeyu Wang</a>
+        at CIS Lab, HKUST(GZ), and with
+        <a href="https://whluo.github.io" target="_blank" rel="noreferrer">Prof. Wenhan Luo</a>
+        at C4 Group, HKUST.
+      </p>
+      <p>
+        I am deeply passionate about extensive topics in Computer Vision and Computer Graphics. I aim to explore the
+        construction of biological-like visual intelligence, which should be capable of autonomous understanding,
+        decision-making, and generation within both physical and digital worlds. My current research focuses on
+        multimodal learning of VLMs and reasoning ability in visual generative models.
+      </p>
+
+      <ul class="interest-tags" aria-label="Research interests">
+        <li>Multimodal Learning</li>
+        <li>Vision-Language Models</li>
+        <li>Visual Generative Models</li>
+        <li>Computer Vision &amp; Graphics</li>
+      </ul>
+
+      <p class="profile-links">
+        <a href="mailto:{{ site.author.email }}">Email</a>
+        {% if site.author.googlescholar %}<a href="{{ site.author.googlescholar }}" target="_blank" rel="noreferrer">Google Scholar</a>{% endif %}
+        {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noreferrer">GitHub</a>{% endif %}
+        {% if site.author.linkedin %}<a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>{% endif %}
+        {% if site.author.twitter %}<a href="https://x.com/{{ site.author.twitter }}" target="_blank" rel="noreferrer">X</a>{% endif %}
+        {% if site.author.rednote %}<a href="{{ site.author.rednote }}" target="_blank" rel="noreferrer">RedNote</a>{% endif %}
+      </p>
+    </div>
+
+    <aside class="profile-side">
+      <div class="portrait-frame">
+        <img class="profile-portrait" src="{{ base_path }}/images/{{ site.author.avatar }}" alt="Portrait of Zongyang Qiu" />
+      </div>
+      {% if site.author.motto %}<p class="portrait-caption">“{{ site.author.motto }}”</p>{% endif %}
+    </aside>
+  </div>
+</section>
+
+<section class="section panel reveal" id="news">
+  <div class="section-head"><h2 class="section-kicker">News</h2></div>
+  <div class="news-list">
+    <article class="news-item">
+      <p><span class="news-date">[2026/09]</span> Joined <a href="https://www.sii.edu.cn/" target="_blank" rel="noreferrer">Shanghai Innovation Institute</a> as a Student Researcher.</p>
+    </article>
+    <article class="news-item">
+      <p><span class="news-date">[2026/04]</span> Honored to be named a <strong>Shanghai Outstanding Graduate</strong> (Top 5%).</p>
+    </article>
+    <article class="news-item">
+      <p><span class="news-date">[2026/01]</span> Joined <a href="https://www.shlab.org.cn/" target="_blank" rel="noreferrer">Shanghai AI Laboratory</a> as a Research Intern.</p>
+    </article>
+    <article class="news-item">
+      <p><span class="news-date">[2026/01]</span> Delighted to attend <strong>AAAI 2026</strong> in Singapore and give an oral presentation.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section panel reveal" id="publications">
+  <div class="section-head"><h2 class="section-kicker">Publications</h2></div>
+  <div class="paper-list">
+    {% for post in site.publications reversed %}
+      {% include paper-card.html %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section panel reveal" id="education">
+  <div class="section-head"><h2 class="section-kicker">Education</h2></div>
+  <div class="experience-list">
+    <article class="experience-card">
+      <div class="experience-logo"><img src="{{ base_path }}/images/hkust_logo.png" alt="HKUST(GZ) logo" loading="lazy" /></div>
+      <div class="experience-body">
+        <h3 class="experience-title"><a href="https://www.hkust-gz.edu.cn" target="_blank" rel="noreferrer">The Hong Kong University of Science and Technology (Guangzhou)</a></h3>
+        <p class="experience-meta">2026.09 – 2028 (Expected)</p>
+        <p class="experience-copy"><strong>MPhil in Artificial Intelligence</strong></p>
+        <p class="experience-copy">Advised by <a href="https://hkustai.github.io/" target="_blank" rel="noreferrer">Prof. Hui Xiong</a> (Fellow of ACM, CCF, AAAI, AAAS, and IEEE)</p>
+        <p class="experience-copy">Research Topic: Multimodal Reasoning and Visual Generative AI</p>
+      </div>
+    </article>
+
+    <article class="experience-card">
+      <div class="experience-logo"><img src="{{ base_path }}/images/fudan_logo.png" alt="Fudan University logo" loading="lazy" /></div>
+      <div class="experience-body">
+        <h3 class="experience-title"><a href="https://www.fudan.edu.cn/en" target="_blank" rel="noreferrer">Fudan University (复旦大学)</a></h3>
+        <p class="experience-meta">2022.09 – 2026.06</p>
+        <p class="experience-copy"><strong>B.S. in Computer Science</strong> · GPA 3.74/4.0</p>
+        <p class="experience-copy">Coursework: Programming (A), Artificial Intelligence (Honors, A), Digital Image Processing (A), Set and Graph Theory (Honors, A)</p>
+      </div>
+    </article>
+
+    <article class="experience-card">
+      <div class="experience-logo"><img src="{{ base_path }}/images/hkust_logo.png" alt="HKUST logo" loading="lazy" /></div>
+      <div class="experience-body">
+        <h3 class="experience-title"><a href="https://hkust.edu.hk" target="_blank" rel="noreferrer">The Hong Kong University of Science and Technology</a></h3>
+        <p class="experience-meta">2024.08 – 2024.12</p>
+        <p class="experience-copy"><strong>Exchange Student</strong> (Bachelor's level)</p>
+        <p class="experience-copy">Coursework: Design and Analysis of Algorithms, Computer Graphics, Probability</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section panel reveal" id="awards">
+  <div class="section-head"><h2 class="section-kicker">Awards and Honors</h2></div>
+  <div class="award-list">
+    <article class="award-row">
+      <span class="award-year">2026</span>
+      <p><strong>Shanghai Outstanding Graduate</strong> (Top 5%)</p>
+    </article>
+    <article class="award-row">
+      <span class="award-year">2025</span>
+      <p><strong>National Scholarship</strong> (Top 1%, ranked 1st in the school)</p>
+    </article>
+    <article class="award-row">
+      <span class="award-year">2025</span>
+      <p>Meritorious Winner, Mathematical Contest in Modeling (Top 7%)</p>
+    </article>
+    <article class="award-row">
+      <span class="award-year">2024</span>
+      <p>Gold Award, China International College Student Innovation Competition</p>
+    </article>
+  </div>
+</section>
+
+<section class="section panel reveal" id="skills">
+  <div class="section-head"><h2 class="section-kicker">Skills</h2></div>
+  <div class="service-list">
+    <article class="service-card">
+      <div class="service-role">Programming</div>
+      <ul class="chip-list">
+        <li>Python</li>
+        <li>C++</li>
+        <li>C</li>
+        <li>SQL</li>
+      </ul>
+    </article>
+    <article class="service-card">
+      <div class="service-role">Technologies</div>
+      <ul class="chip-list">
+        <li>Deep Learning</li>
+        <li>Generative AI</li>
+        <li>Distributed Training</li>
+        <li>Data Synthesis</li>
+      </ul>
+    </article>
+    <article class="service-card">
+      <div class="service-role">Languages</div>
+      <ul class="chip-list">
+        <li>Academic English (TOEFL 103)</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section panel reveal" id="service">
+  <div class="section-head"><h2 class="section-kicker">Service</h2></div>
+  <div class="service-list">
+    <article class="service-card">
+      <div class="service-role">Reviewer</div>
+      <p class="service-details">AAAI Conference on Artificial Intelligence (AAAI 2026)<br />IEEE Transactions on Affective Computing</p>
+    </article>
+  </div>
+</section>

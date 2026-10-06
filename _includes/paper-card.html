@@ -1,0 +1,56 @@
+{% comment %}
+  Publication card for the single-page homepage. Expects `post` (a
+  _publications document). Papers where the site author is first author get
+  the highlighted style.
+{% endcomment %}
+{% include base_path %}
+{% assign paper_id = post.url | slugify %}
+{% assign first_author = post.authors | split: ',' | first | strip %}
+{% capture self_author %}<strong>{{ site.author.name }}</strong>{% endcapture %}
+{% assign primary_url = post.project_page | default: post.arxiv | default: post.paperurl | default: post.code %}
+{% assign abstract = post.content | markdownify | replace: '<strong>Abstract:</strong>', '' | replace: '<p>', '' | replace: '</p>', ' ' | strip %}
+
+<article class="paper-card{% if first_author == site.author.name %} paper-card-highlight{% endif %}">
+  {% if post.header.teaser %}
+  <div class="paper-media">
+    <img src="{{ base_path }}/images/{{ post.header.teaser }}" alt="{{ post.title | strip_html | escape }} teaser" loading="lazy" />
+  </div>
+  {% endif %}
+  <div class="paper-body">
+    <h3 class="paper-title">
+      {% if primary_url %}
+        <a href="{{ primary_url }}" target="_blank" rel="noreferrer">{{ post.title }}</a>
+      {% else %}
+        <span>{{ post.title }}</span>
+      {% endif %}
+    </h3>
+
+    {% if post.authors %}
+    <p class="paper-authors">{{ post.authors | replace: site.author.name, self_author }}</p>
+    {% endif %}
+
+    <p class="paper-links">
+      {% assign sep = false %}
+      {% if post.arxiv %}<a href="{{ post.arxiv }}" target="_blank" rel="noreferrer">arXiv</a>{% assign sep = true %}{% endif %}
+      {% if post.paperurl %}{% if sep %}<span>/</span>{% endif %}<a href="{{ post.paperurl }}" target="_blank" rel="noreferrer">PDF</a>{% assign sep = true %}{% endif %}
+      {% if post.project_page %}{% if sep %}<span>/</span>{% endif %}<a href="{{ post.project_page }}" target="_blank" rel="noreferrer">Project Page</a>{% assign sep = true %}{% endif %}
+      {% if post.code %}{% if sep %}<span>/</span>{% endif %}<a href="{{ post.code }}" target="_blank" rel="noreferrer">Code</a>{% assign sep = true %}{% endif %}
+      {% if post.bibtex %}{% if sep %}<span>/</span>{% endif %}<button type="button" data-bibtex-toggle aria-controls="{{ paper_id }}-bibtex" aria-expanded="false">BibTeX</button>{% endif %}
+    </p>
+
+    {% if post.venue %}
+    <p class="paper-venue"><em><b>{{ post.venue }}</b></em></p>
+    {% endif %}
+
+    {% if post.bibtex %}
+    <pre class="paper-bibtex" id="{{ paper_id }}-bibtex" hidden><button type="button" class="bibtex-copy">Copy</button><code>{{ post.bibtex | strip | escape }}</code></pre>
+    {% endif %}
+
+    {% if abstract != '' %}
+    <div class="paper-abstract" data-abstract>
+      <div class="paper-abstract-copy">{{ abstract }}</div>
+      <button class="abstract-toggle" type="button" aria-expanded="false" hidden>Show more</button>
+    </div>
+    {% endif %}
+  </div>
+</article>

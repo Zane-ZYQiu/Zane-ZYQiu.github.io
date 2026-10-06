@@ -9,20 +9,20 @@
 # permalinks, just unlinked from the header).
 
 main:
-  - title: "About Me"
-    url: /#about-me
+  - title: "Intro"
+    url: /#intro
 
   - title: "News"
     url: /#news
 
-  - title: "Education"
-    url: /#education
-
   - title: "Publications"
     url: /#publications
 
+  - title: "Education"
+    url: /#education
+
   - title: "Awards"
-    url: /#awards-and-honors
+    url: /#awards
 
   - title: "Skills"
     url: /#skills
