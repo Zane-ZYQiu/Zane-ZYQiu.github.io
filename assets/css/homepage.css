@@ -503,7 +503,7 @@ strong {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 10px 8px;
   margin: 20px 0 0;
   padding: 0;
   list-style: none;
@@ -528,6 +528,7 @@ strong {
 }
 
 .profile-copy > .profile-links {
+  margin: 22px auto 0;
   text-indent: 0;
   text-align: center;
 }
@@ -682,8 +683,10 @@ strong {
 }
 
 .experience-logo {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   width: 76px;
   height: 76px;
   border-radius: 12px;
@@ -698,14 +701,17 @@ strong {
 }
 
 .experience-logo:has(img) {
+  padding: 10px;
   background: #ffffff;
 }
 
 .experience-logo img {
-  width: 100%;
-  height: 100%;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  padding: 10px;
 }
 
 .experience-title {
