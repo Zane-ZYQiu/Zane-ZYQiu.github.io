@@ -714,6 +714,16 @@ strong {
   object-fit: contain;
 }
 
+/* Logos whose artwork already has generous margins. */
+.experience-logo.logo-fill {
+  padding: 3px;
+}
+
+/* SII artwork sits small and slightly high inside a mostly blank canvas. */
+.logo-sii img {
+  transform: scale(1.75) translateY(6%);
+}
+
 .experience-title {
   margin: 0 0 4px;
   font-size: 1.08rem;

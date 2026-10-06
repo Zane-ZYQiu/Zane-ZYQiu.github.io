@@ -18,14 +18,14 @@ main:
   - title: "Publications"
     url: /#publications
 
+  - title: "Experience"
+    url: /#experience
+
   - title: "Education"
     url: /#education
 
   - title: "Awards"
     url: /#awards
-
-  - title: "Skills"
-    url: /#skills
 
   - title: "Service"
     url: /#service
