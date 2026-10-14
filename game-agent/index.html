@@ -1,172 +1,279 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="五期红鸟项目：自进化游戏设计 Agent，招募 CMA 方向同学。">
+<meta name="description" content="五期红鸟项目：自进化游戏设计 Agent，招募一位 AI / DSA 以外学域的同学，对游戏设计、AI Agent、世界模型、RSI、具身智能感兴趣即可。">
+<meta name="theme-color" content="#070a12">
 <title>自进化游戏设计 Agent</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
 <style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <style>
-/* Layout: clean research-page look — centered hero with soft glow, one showcase 3D card, icon cards, stat cards, recruiting card */
+/* Dark, neon-tinged research page: aurora hero, real Godot case study, recruiting card. */
 :root{
-  --bg:#ffffff; --bg-soft:#f6f7f9; --ink:#0b1220; --ink-2:#334155; --muted:#64748b; --line:#e5e8ee; --line-2:#d7dce4;
-  --accent:#0a5bd3; --accent-soft:#eaf1fd; --warm:#e0801d; --warm-soft:#fdf1e3; --bug:#d9365e; --ok:#15a067;
-  --glow-a:rgba(10,91,211,.10); --glow-b:rgba(224,128,29,.08);
-  --nav-bg:rgba(255,255,255,.82);
-  --shadow:0 1px 2px rgba(15,23,42,.04),0 8px 28px -12px rgba(15,23,42,.14);
-  /* 3D scene */
-  --st-top:#f4f8ff; --stage:#e4ecf8; --grass:#8ed4a0; --leaf:#5db47a; --stone:#bcc5d6; --wood:#d7965a; --hero:#7a5af8; --cloud:#ffffff;
+  color-scheme:dark;
+  --bg:#070a12; --bg-soft:#0e1320; --panel:rgba(16,22,36,.72); --ink:#f1f4fa; --ink-2:#c5ccda; --muted:#8a94a8; --line:#1c2436; --line-2:#2a3448;
+  --accent:#5b9dff; --accent-soft:rgba(91,157,255,.14); --violet:#a78bfa; --warm:#f5a54a; --warm-soft:rgba(245,165,74,.14);
+  --bug:#ff6b8e; --ok:#3fdc97; --skip:#5b6578;
+  --glow-a:rgba(91,157,255,.22); --glow-b:rgba(167,139,250,.18); --glow-c:rgba(245,165,74,.12);
+  --nav-bg:rgba(7,10,18,.72);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 18px 50px -20px rgba(0,0,0,.8);
+  --grad:linear-gradient(90deg,#5b9dff,#a78bfa 45%,#f5a54a 80%,#5b9dff);
   --sans:"Inter","Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --display:"Inter Tight","Inter","Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0a0e16; --bg-soft:#111723; --ink:#eef2f8; --ink-2:#c3cad6; --muted:#8b95a8; --line:#1f2737; --line-2:#2b3446;
-  --accent:#5b9dff; --accent-soft:#132440; --warm:#f0a04b; --warm-soft:#2b1f11; --bug:#ff6b8e; --ok:#3fcf8e;
-  --glow-a:rgba(91,157,255,.14); --glow-b:rgba(240,160,75,.08); --nav-bg:rgba(10,14,22,.78);
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.6);
-  --st-top:#172238; --stage:#0e1524; --grass:#3f8f5d; --leaf:#2f7a4c; --stone:#3c465c; --wood:#a0672f; --hero:#9b85ff; --cloud:#2a3552;
-  color-scheme:dark;
-}}
-:root[data-theme="dark"]{
-  --bg:#0a0e16; --bg-soft:#111723; --ink:#eef2f8; --ink-2:#c3cad6; --muted:#8b95a8; --line:#1f2737; --line-2:#2b3446;
-  --accent:#5b9dff; --accent-soft:#132440; --warm:#f0a04b; --warm-soft:#2b1f11; --bug:#ff6b8e; --ok:#3fcf8e;
-  --glow-a:rgba(91,157,255,.14); --glow-b:rgba(240,160,75,.08); --nav-bg:rgba(10,14,22,.78);
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.6);
-  --st-top:#172238; --stage:#0e1524; --grass:#3f8f5d; --leaf:#2f7a4c; --stone:#3c465c; --wood:#a0672f; --hero:#9b85ff; --cloud:#2a3552;
-  color-scheme:dark;
-}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;background:var(--bg);overflow-x:clip}
 body{background:var(--bg);color:var(--ink-2);font-family:var(--sans);font-size:15.5px;line-height:1.7;padding-inline:20px;padding-block:0 64px;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
 .wrap{max-width:1120px;margin:0 auto;position:relative}
 h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;line-height:1.2;text-wrap:balance}
 p{margin:0}
 a{color:inherit}
+::selection{background:rgba(91,157,255,.35);color:#fff}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
 svg.i{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.grad-text{background:var(--grad);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 9s linear infinite}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes pulse{50%{opacity:.3}}
 
-.hero-bg{position:absolute;left:0;right:0;top:0;height:760px;pointer-events:none;z-index:0;
-  background:radial-gradient(60% 55% at 50% 0%,var(--glow-a),transparent 70%),radial-gradient(40% 40% at 85% 20%,var(--glow-b),transparent 70%)}
-.hero-bg::after{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--line-2) 1px,transparent 1px);background-size:22px 22px;
-  -webkit-mask-image:radial-gradient(55% 60% at 50% 20%,#000 20%,transparent 75%);mask-image:radial-gradient(55% 60% at 50% 20%,#000 20%,transparent 75%);opacity:.7}
+/* ---------- backdrop ---------- */
+.hero-bg{position:absolute;left:-20px;right:-20px;top:0;height:980px;pointer-events:none;z-index:0;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.9;mix-blend-mode:screen}
+.blob.a{width:620px;height:620px;left:50%;top:-260px;margin-left:-460px;background:var(--glow-a);animation:drift 16s ease-in-out infinite alternate}
+.blob.b{width:520px;height:520px;left:50%;top:-140px;margin-left:40px;background:var(--glow-b);animation:drift 20s ease-in-out infinite alternate-reverse}
+.blob.c{width:420px;height:420px;left:50%;top:180px;margin-left:-120px;background:var(--glow-c);animation:drift 24s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,40px) scale(1.12)}}
+.floor{position:absolute;left:-30%;right:-30%;bottom:-40px;height:520px;transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background-image:linear-gradient(rgba(91,157,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(91,157,255,.28) 1px,transparent 1px);background-size:56px 56px;
+  -webkit-mask-image:linear-gradient(to top,#000 10%,transparent 85%);mask-image:linear-gradient(to top,#000 10%,transparent 85%);animation:floor 3.2s linear infinite;opacity:.55}
+@keyframes floor{to{background-position:0 56px,0 0}}
+.stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 12% 18%,#fff8,transparent),radial-gradient(1px 1px at 72% 12%,#fff6,transparent),radial-gradient(1.5px 1.5px at 38% 34%,#a78bfa99,transparent),radial-gradient(1px 1px at 86% 40%,#fff5,transparent),radial-gradient(1px 1px at 24% 58%,#5b9dff88,transparent),radial-gradient(1px 1px at 60% 62%,#fff4,transparent),radial-gradient(1.5px 1.5px at 92% 70%,#f5a54a88,transparent),radial-gradient(1px 1px at 6% 82%,#fff5,transparent);animation:twinkle 6s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:.4}}
+.page-noise{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:3px 3px}
 
-/* hero */
-.hero{position:relative;z-index:1;text-align:center;padding-block:72px 40px;display:grid;justify-items:center;gap:22px}
-.eyebrow-pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--nav-bg);color:var(--ink-2)}
-.eyebrow-pill i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-h1{font-size:clamp(38px,6.4vw,68px);font-weight:800;letter-spacing:-.035em}
-h1 .zh{font-weight:900;letter-spacing:-.02em}
-h1 .grad{background:linear-gradient(90deg,var(--accent),var(--warm));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:clamp(16px,1.9vw,19px);max-width:34em;color:var(--ink-2)}
+/* ---------- hero ---------- */
+.hero{position:relative;z-index:1;text-align:center;padding-block:96px 48px;display:grid;justify-items:center;gap:24px}
+.eyebrow-pill{display:inline-block;text-wrap:balance;max-width:100%;font-size:13px;font-weight:500;padding:7px 16px;border-radius:999px;border:1px solid var(--line-2);background:rgba(14,19,32,.7);color:var(--ink-2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.eyebrow-pill i{display:inline-block;vertical-align:middle;margin:-2px 10px 0 0;width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(63,220,151,.16),0 0 14px var(--ok);animation:pulse 1.6s ease-in-out infinite}
+.eyebrow-pill b{color:var(--ink);font-weight:600}
+h1{font-size:clamp(42px,7.4vw,84px);font-weight:900;letter-spacing:-.035em;line-height:1.05}
+h1 .en{display:block;font-size:.48em;font-weight:700;letter-spacing:-.01em;color:var(--ink-2);margin-top:12px;font-family:var(--display)}
+.lead{font-size:clamp(16px,1.9vw,19px);max-width:34em;color:var(--ink-2);text-wrap:balance}
 .lead b{color:var(--ink);font-weight:600}
 .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--sans);padding:11px 20px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg);color:var(--ink);text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
-.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow);border-color:var(--ink-2)}
-.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--sans);padding:11px 20px;border-radius:999px;border:1px solid var(--line-2);background:rgba(14,19,32,.7);color:var(--ink);text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .2s,border-color .2s;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn:hover{transform:translateY(-1px);border-color:var(--accent);box-shadow:0 0 0 1px var(--accent-soft),0 10px 30px -10px var(--accent)}
+.btn.primary{background:linear-gradient(135deg,#5b9dff,#8b7bff);border-color:transparent;color:#fff;box-shadow:0 10px 34px -12px #5b9dff}
+.btn.primary:hover{box-shadow:0 14px 40px -10px #8b7bff}
 .btn:disabled{opacity:.45;cursor:default;transform:none;box-shadow:none}
 .btn.sm{padding:7px 14px;font-size:13.5px}
+.marquee{width:min(100%,760px);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee .track{display:flex;gap:10px;width:max-content;animation:marq 32s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.marquee span{font:500 13px var(--mono);padding:6px 13px;border-radius:999px;border:1px solid var(--line-2);background:rgba(14,19,32,.6);color:var(--ink-2);white-space:nowrap}
+.marquee span b{color:var(--accent);font-weight:600;margin-right:6px}
+@keyframes marq{to{transform:translateX(-50%)}}
 
-/* nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-inline:-20px;padding-inline:20px;background:var(--nav-bg);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line)}
+/* ---------- nav ---------- */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-inline:-20px;padding-inline:20px;background:var(--nav-bg);backdrop-filter:saturate(1.6) blur(16px);-webkit-backdrop-filter:saturate(1.6) blur(16px);border-bottom:1px solid var(--line)}
 .nav .in{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
-.nav .brand{font-family:var(--display);font-weight:700;color:var(--ink);font-size:15px;margin-right:auto;white-space:nowrap;padding-right:12px}
-.nav a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:999px;white-space:nowrap}
-.nav a:hover{color:var(--ink);background:var(--bg-soft)}
-.nav a.cta{color:var(--accent);background:var(--accent-soft)}
+.nav .in::-webkit-scrollbar{display:none}
+.nav .brand{font-family:var(--display);font-weight:700;color:var(--ink);font-size:15px;margin-right:auto;white-space:nowrap;padding-right:12px;display:inline-flex;align-items:center;gap:8px}
+.nav .brand i{width:9px;height:9px;border-radius:3px;background:linear-gradient(135deg,#5b9dff,#a78bfa);box-shadow:0 0 12px #5b9dff}
+.nav a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:999px;white-space:nowrap;transition:color .15s,background .15s}
+.nav a:hover,.nav a.on{color:var(--ink);background:var(--bg-soft)}
+.nav a.cta{color:#fff;background:linear-gradient(135deg,#5b9dff,#8b7bff)}
 
-section{padding-block:88px 0;position:relative;z-index:1;scroll-margin-top:60px}
-.sec-h{text-align:center;display:grid;justify-items:center;gap:10px;margin-bottom:36px}
-.kicker{font-family:var(--mono);font-size:12.5px;color:var(--accent);letter-spacing:.04em}
-h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-.02em}
-.sec-h p{max-width:36em;color:var(--muted)}
+section{padding-block:104px 0;position:relative;z-index:1;scroll-margin-top:60px}
+.sec-h{text-align:center;display:grid;justify-items:center;gap:12px;margin-bottom:40px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;color:var(--accent);letter-spacing:.08em}
+.kicker::before{content:"";width:18px;height:1px;background:currentColor;box-shadow:0 0 8px currentColor}
+h2{font-size:clamp(28px,3.8vw,42px);font-weight:800;letter-spacing:-.02em}
+.sec-h p{max-width:38em;color:var(--muted)}
 
-/* demo */
-.demo{border:1px solid var(--line);border-radius:20px;background:var(--bg);box-shadow:var(--shadow);overflow:hidden}
-.stage{position:relative;height:clamp(360px,52vw,560px);background:linear-gradient(180deg,var(--st-top),var(--stage));touch-action:pan-y;cursor:grab;overflow:hidden}
-.stage:active{cursor:grabbing}
-.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.ov{position:absolute;top:16px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none}
-.ov .l{display:flex;gap:8px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--nav-bg);border:1px solid var(--line);color:var(--ink);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.chip i{width:7px;height:7px;border-radius:50%;background:var(--muted)}
-.chip.run i{background:var(--accent);animation:pulse 1s infinite}
-.chip.fail{color:var(--bug);border-color:color-mix(in srgb,var(--bug) 40%,transparent)} .chip.fail i{background:var(--bug)}
-.chip.pass{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 40%,transparent)} .chip.pass i{background:var(--ok)}
-.hint{font-size:12px;color:var(--muted);background:var(--nav-bg);padding:4px 10px;border-radius:999px;border:1px solid var(--line)}
-@keyframes pulse{50%{opacity:.3}}
-.callout{position:absolute;pointer-events:none;font-size:12px;font-weight:600;color:#fff;background:var(--bug);padding:4px 10px;border-radius:999px;white-space:nowrap;transform:translate(-50%,calc(-100% - 26px));box-shadow:0 6px 18px -6px var(--bug)}
-.callout::after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;background:var(--bug);transform:translateX(-50%) rotate(45deg)}
-.fallback{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);padding:24px;text-align:center}
+/* glow card base */
+.glow{position:relative;border:1px solid var(--line);border-radius:18px;background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden;isolation:isolate}
+.glow::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(91,157,255,.16),transparent 45%)}
+.glow:hover::before{opacity:1}
+.glow::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),rgba(139,123,255,.75),transparent 55%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.glow:hover::after{opacity:1}
 
-.dbar{padding:20px 24px 22px;display:grid;gap:16px;border-top:1px solid var(--line)}
-.stepper{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:relative}
-.stepper::before{content:"";position:absolute;top:13px;left:8.33%;right:8.33%;height:2px;background:var(--line)}
-.stepper .fill{position:absolute;top:13px;left:8.33%;height:2px;background:var(--accent);width:0;transition:width .5s ease}
-.st{display:grid;justify-items:center;gap:6px;text-align:center;position:relative}
-.st b{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:600 12.5px var(--mono);background:var(--bg);border:2px solid var(--line-2);color:var(--muted);transition:all .3s}
-.st span{font-size:13px;color:var(--muted);font-weight:500;transition:color .3s}
-.st.past b{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
-.st.past span{color:var(--ink-2)}
-.st.on b{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 0 5px var(--accent-soft)}
-.st.on span{color:var(--ink);font-weight:700}
-.drow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.msg{flex:1;min-width:0;font-size:15px;color:var(--ink);display:flex;gap:10px;align-items:center}
-.msg .it{font:600 12px var(--mono);color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:999px;flex:none}
-.cap{font-size:12.5px;color:var(--muted);text-align:center;margin-top:12px}
-
-/* three things */
+/* ---------- what ---------- */
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.card{border:1px solid var(--line);border-radius:16px;background:var(--bg);padding:26px;display:grid;gap:12px;align-content:start;transition:box-shadow .2s,transform .2s}
-.card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
-.ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.card{padding:28px;display:grid;gap:12px;align-content:start;transition:transform .25s}
+.card:hover{transform:translateY(-3px)}
+.ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);box-shadow:0 0 24px -6px var(--accent)}
 .ico svg.i{width:21px;height:21px}
-.ico.w{background:var(--warm-soft);color:var(--warm)}
-.ico.b{background:color-mix(in srgb,var(--bug) 12%,var(--bg));color:var(--bug)}
+.ico.w{background:var(--warm-soft);color:var(--warm);box-shadow:0 0 24px -6px var(--warm)}
+.ico.b{background:rgba(255,107,142,.13);color:var(--bug);box-shadow:0 0 24px -6px var(--bug)}
 .card h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
 .card p{font-size:15px;color:var(--muted)}
 .flow{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.flow span{font-size:12.5px;padding:3px 9px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--line);color:var(--ink-2)}
+.flow span{font-size:12.5px;padding:3px 9px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--line-2);color:var(--ink-2)}
 
-/* stats */
+/* ---------- case ---------- */
+.meta{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.meta span{font:500 12.5px var(--mono);padding:4px 11px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg-soft);color:var(--ink-2)}
+.meta span.ok{color:var(--ok);border-color:rgba(63,220,151,.4);background:rgba(63,220,151,.08)}
+
+.how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px;counter-reset:h;position:relative}
+.how-step{padding:20px;display:grid;gap:6px;align-content:start}
+.how-step b{color:var(--ink);font-size:16px}
+.how-step p{font-size:14px;color:var(--muted)}
+.how-n{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font:700 14px var(--mono);color:#fff;background:linear-gradient(135deg,#5b9dff,#8b7bff);box-shadow:0 0 20px -4px #5b9dff;margin-bottom:6px}
+.sg small{font-size:12px;color:var(--muted);line-height:1.45}
+.case-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:16px;margin-top:16px}
+.couple{padding:26px;display:grid;gap:16px;align-content:start}
+.couple h3,.rules h3,.board h3{font-size:18px;font-weight:700}
+.sub{font-size:14px;color:var(--muted)}
+.four{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;position:relative}
+.four div{border:1px solid var(--line-2);border-radius:14px;padding:14px;background:var(--bg-soft);display:grid;gap:4px;position:relative;overflow:hidden}
+.four div::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--accent);opacity:0;animation:sync 3.2s ease-in-out infinite}
+@keyframes sync{0%,60%,100%{opacity:0}70%,85%{opacity:1}}
+.four b{font-family:var(--display);color:var(--ink);font-size:15px}
+.four .em{font-style:normal;margin-right:8px}
+.four span{font:500 12px var(--mono);color:var(--muted)}
+.rules{padding:26px;display:grid;gap:14px;align-content:start}
+.rules ol{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:r}
+.rules li{counter-increment:r;display:grid;grid-template-columns:30px 1fr;gap:10px;font-size:14.5px;color:var(--ink-2);align-items:start}
+.rules li::before{content:counter(r,decimal-leading-zero);font:600 12px var(--mono);color:var(--accent);padding-top:3px}
+.rules li b{color:var(--ink);font-weight:600}
+code{font:500 .9em var(--mono);color:var(--warm);background:var(--warm-soft);padding:1px 6px;border-radius:6px}
+
+/* playable scene */
+.play{padding:26px;display:grid;gap:18px}
+.play-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.play-head h3{font-size:18px;font-weight:700}
+.play-body{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start}
+.play-main{display:grid;gap:10px;min-width:0}
+.play-stage{position:relative;height:clamp(340px,46vw,520px);border-radius:14px;overflow:hidden;border:1px solid var(--line-2);background:#b3b9cc;touch-action:none;cursor:crosshair}
+.play-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.play.is-before .play-stage{box-shadow:0 0 0 2px rgba(255,107,142,.55),0 0 30px -8px var(--bug)}
+.hud{position:absolute;top:12px;left:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.hud .cash{font:800 18px var(--display);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);padding:4px 12px 4px 8px;border-radius:999px;background:rgba(20,26,42,.55)}
+.hud .cash.neg b{color:#ff9db3}
+.hud button{font:600 13px var(--sans);padding:6px 12px;border-radius:8px;border:0;background:#4a5068;color:#fff;cursor:pointer}
+.hud button:hover:not(:disabled){background:#5b627e}
+.hud button:disabled{background:#8b90a3;color:#c9ccd6;cursor:default}
+.status{position:absolute;left:12px;right:12px;bottom:12px;margin:0;font-size:13.5px;font-weight:600;color:#fff;background:rgba(20,26,42,.7);padding:8px 12px;border-radius:10px;width:fit-content;max-width:calc(100% - 24px);pointer-events:none}
+.status.bad{background:rgba(196,40,82,.88)}
+.step-tag{position:absolute;top:12px;right:12px;font:600 13px var(--sans);color:#fff;background:linear-gradient(135deg,#5b9dff,#8b7bff);padding:6px 12px;border-radius:999px;box-shadow:0 8px 20px -8px #5b9dff;max-width:60%}
+.play-loading{position:absolute;inset:0;display:grid;place-items:center;font-size:14px;color:#3a4158;background:#b3b9cc}
+.palette{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.pal{flex:none;width:76px;display:grid;justify-items:center;gap:2px;padding:6px 4px 7px;border-radius:12px;border:1px solid var(--line-2);background:var(--bg-soft);color:var(--ink-2);cursor:pointer;font:500 11.5px var(--sans)}
+.pal img{width:52px;height:52px}
+.pal small{font:600 11px var(--mono);color:var(--warm)}
+.pal:hover{border-color:var(--accent)}
+.pal.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 18px -6px var(--accent);color:var(--ink)}
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.tools button{font:600 13px var(--sans);padding:7px 13px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg-soft);color:var(--ink-2);cursor:pointer}
+.tools button:hover{border-color:var(--accent);color:var(--ink)}
+.tools button.on{border-color:var(--bug);color:var(--bug);background:rgba(255,107,142,.1)}
+.agent{border:1px solid var(--line-2);border-radius:14px;background:var(--bg-soft);padding:18px;display:grid;gap:12px;align-content:start}
+.agent h4{margin:0;font:700 16px var(--display);color:var(--ink)}
+.agent p{font-size:13.5px;color:var(--muted)}
+.agent .btn{justify-self:start}
+.log-wrap{overflow-x:auto}
+.log{width:100%;border-collapse:collapse;font-size:12.5px}
+.log th{font:600 11px var(--mono);color:var(--muted);text-align:left;padding:4px 6px;border-bottom:1px solid var(--line-2)}
+.log td{padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2);animation:rowin .35s ease}
+.log td small{display:block;color:var(--muted);font-size:11px}
+.log td:nth-child(3),.log td:nth-child(4){font-family:var(--mono);white-space:nowrap}
+.log td:last-child{font-weight:800;font-size:15px}
+.log tr.ok td:last-child,.log tr.ok td:nth-child(4){color:var(--ok)}
+.log tr.bad td:last-child,.log tr.bad td:nth-child(4){color:var(--bug)}
+@keyframes rowin{from{opacity:0;transform:translateY(4px)}}
+.log-verdict{font-size:13.5px!important;padding:10px 12px;border-radius:10px;border:1px dashed var(--line-2)}
+.log-verdict.ok{color:var(--ok)!important;border-color:rgba(63,220,151,.45)}
+.log-verdict.bad{color:var(--bug)!important;border-color:rgba(255,107,142,.5)}
+.board{margin-top:16px;padding:26px;display:grid;gap:18px}
+.board-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px}
+.ctrl{font:600 13px var(--sans);padding:8px 14px;border-radius:12px;border:1px solid var(--line-2);background:var(--bg-soft);color:var(--ink-2);cursor:pointer;display:grid;gap:1px;text-align:left;transition:border-color .2s,box-shadow .2s,color .2s}
+.ctrl small{font:500 11px var(--mono);color:var(--muted)}
+.ctrl:hover{border-color:var(--accent)}
+.ctrl[aria-pressed="true"]{color:var(--ink);border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 22px -6px var(--accent)}
+.ctrl[aria-pressed="true"].red{border-color:var(--bug);box-shadow:0 0 0 1px var(--bug),0 0 22px -6px var(--bug)}
+.stages{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;position:relative}
+.sg{border:1px solid var(--line-2);border-radius:14px;padding:14px 12px;background:var(--bg-soft);display:grid;gap:4px;align-content:start;min-height:132px;position:relative;transition:border-color .35s,background .35s,box-shadow .35s,transform .35s}
+.sg .n{font:600 11.5px var(--mono);color:var(--muted)}
+.sg b{font-size:14px;color:var(--ink);font-weight:700;line-height:1.35}
+.sg code{font-size:10.5px;color:var(--muted);background:none;padding:0;word-break:break-all}
+.sg .s{margin-top:auto;font:700 11px var(--mono);letter-spacing:.06em;color:var(--skip)}
+.sg.green{border-color:rgba(63,220,151,.5);background:rgba(63,220,151,.07);box-shadow:0 0 24px -12px var(--ok)}
+.sg.green .s{color:var(--ok)}
+.sg.red{border-color:rgba(255,107,142,.6);background:rgba(255,107,142,.08);box-shadow:0 0 24px -10px var(--bug)}
+.sg.red .s{color:var(--bug)}
+.sg.notrun{opacity:.45}
+.sg.flash{transform:translateY(-3px)}
+.verdict{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:14px 16px;border-radius:14px;border:1px dashed var(--line-2);font-size:14.5px;color:var(--ink-2)}
+.verdict .big{font:800 26px var(--display);color:var(--ink);letter-spacing:-.02em}
+.verdict .big.ok{color:var(--ok)} .verdict .big.bad{color:var(--bug)}
+.checks-row{display:flex;flex-wrap:wrap;gap:6px}
+.checks-row span{font:500 11.5px var(--mono);padding:3px 8px;border-radius:8px;border:1px solid var(--line-2);color:var(--muted)}
+.checks-row span.p{color:var(--ok);border-color:rgba(63,220,151,.4)}
+.checks-row span.f{color:var(--bug);border-color:rgba(255,107,142,.4)}
+
+.foot-note{margin-top:18px;font-size:12.5px;color:var(--muted);text-align:center;max-width:56em;margin-inline:auto}
+
+/* ---------- stats ---------- */
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.stat{border:1px solid var(--line);border-radius:16px;background:var(--bg);padding:24px;display:grid;gap:8px;align-content:start}
-.stat .n{font-family:var(--display);font-size:clamp(28px,3.2vw,38px);font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
-.stat .n.a{color:var(--accent)} .stat .n.w{color:var(--warm)}
+.stat{padding:26px;display:grid;gap:8px;align-content:start}
+.stat .n{font-family:var(--display);font-size:clamp(30px,3.4vw,42px);font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
+.stat .n.a{color:var(--accent);text-shadow:0 0 30px rgba(91,157,255,.45)} .stat .n.w{color:var(--warm);text-shadow:0 0 30px rgba(245,165,74,.35)}
 .stat p{font-size:14.5px;color:var(--muted)}
 
-/* join */
-.join{border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,var(--bg-soft),var(--bg));padding:36px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:32px;align-items:start}
-.join h2{font-size:clamp(24px,3vw,32px)}
+/* ---------- join ---------- */
+.join{padding:40px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:34px;align-items:start;background:linear-gradient(160deg,rgba(91,157,255,.10),rgba(167,139,250,.06) 40%,rgba(14,19,32,.75))}
+.join h2{font-size:clamp(26px,3.2vw,36px)}
 .about{margin-top:14px;font-size:15.5px;color:var(--ink-2);max-width:40em}
+.about b{color:var(--ink)}
 .vibe{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .vibe span{font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:999px;background:var(--warm-soft);color:var(--warm)}
-.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.team span{font-size:13.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink-2)}
+.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.team span{font-size:13.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg-soft);color:var(--ink-2)}
 .team span b{font-family:var(--display);color:var(--ink);margin-right:6px}
-.team span.open{border:1.5px dashed var(--accent);color:var(--accent);background:var(--accent-soft)}
+.team span.open{border:1.5px dashed var(--accent);color:var(--accent);background:var(--accent-soft);box-shadow:0 0 22px -8px var(--accent);animation:breathe 2.4s ease-in-out infinite}
 .team span.open b{color:var(--accent)}
+@keyframes breathe{50%{box-shadow:0 0 30px -4px var(--accent)}}
+.topics-lbl{margin-top:22px;font-size:14px;color:var(--muted)}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.topics span{font:600 13px var(--sans);padding:7px 13px;border-radius:12px;border:1px solid var(--line-2);background:var(--bg-soft);color:var(--ink);display:inline-flex;gap:8px;align-items:center}
+.topics span i{width:8px;height:8px;border-radius:2px;background:var(--c,var(--accent));box-shadow:0 0 10px var(--c,var(--accent))}
 .checks{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
 .checks li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--ink-2)}
 .checks li svg.i{color:var(--ok);margin-top:4px}
-.contact{border:1px solid var(--line);border-radius:16px;background:var(--bg);padding:24px;display:grid;gap:14px;box-shadow:var(--shadow)}
+.contact{border:1px solid var(--line-2);border-radius:16px;background:rgba(7,10,18,.7);padding:24px;display:grid;gap:14px;box-shadow:var(--shadow)}
 .contact .t{font-family:var(--display);font-size:18px;font-weight:700;color:var(--ink)}
 .contact .s{font-size:14px;color:var(--muted);margin-top:-8px}
 .crow{display:grid;gap:6px}
 .crow .lbl{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted)}
 .crow .lbl svg.i{width:15px;height:15px}
-.addr{font-family:var(--mono);font-size:14.5px;color:var(--ink);padding:8px 8px 8px 14px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--line);display:flex;gap:10px;align-items:center}
+.addr{font-family:var(--mono);font-size:14.5px;color:var(--ink);padding:8px 8px 8px 14px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--line-2);display:flex;gap:10px;align-items:center}
 .addr .v{flex:1;min-width:0;word-break:break-all;user-select:all}
 .cp{flex:none;font:600 12.5px var(--sans);padding:6px 12px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg);color:var(--ink);cursor:pointer}
-.cp:hover{border-color:var(--ink-2)}
+.cp:hover{border-color:var(--accent)}
 .cp.ok{color:var(--ok);border-color:var(--ok)}
 .ps{font-size:14px;color:var(--muted);padding-top:12px;border-top:1px solid var(--line)}
 .ps b{color:var(--ink);font-weight:600}
-footer{margin-top:48px;text-align:center;font-size:12.5px;color:var(--muted)}
+footer{margin-top:56px;text-align:center;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
+footer a{color:var(--ink-2)}
 
+/* reveal */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .stages{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .how{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .case-grid{grid-template-columns:1fr}
+  .play-body{grid-template-columns:1fr}
+}
 @media (max-width:900px){
   .cards{grid-template-columns:1fr}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -175,25 +282,38 @@ footer{margin-top:48px;text-align:center;font-size:12.5px;color:var(--muted)}
 @media (max-width:560px){
   body{padding-inline:16px}
   .nav{margin-inline:-16px;padding-inline:16px}
+  .hero-bg{left:-16px;right:-16px}
+  .eyebrow-pill{border-radius:16px;font-size:12.5px;padding:7px 14px}
   .nav .brand{display:none}
-  .hero{padding-block:52px 28px}
+  .hero{padding-block:64px 32px}
   .stats{grid-template-columns:1fr}
-  .dbar{padding:16px}
-  .st span{font-size:11.5px}
-  .hint{display:none}
+  .stages{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .how{grid-template-columns:1fr}
+  .board,.play,.couple,.rules{padding:18px}
 }
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .chip.run i{animation:none} .btn,.card,.st b,.stepper .fill{transition:none} }
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important}
+  .btn,.card,.sg{transition:none!important}
+  .js .rv{opacity:1;transform:none;transition:none}
+}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
-<div class="hero-bg" aria-hidden="true"></div>
+<div class="page-noise" aria-hidden="true"></div>
+<div class="hero-bg" aria-hidden="true">
+  <div class="stars"></div>
+  <div class="blob a"></div><div class="blob b"></div><div class="blob c"></div>
+  <div class="floor"></div>
+</div>
 
 <nav class="nav" aria-label="页面导航">
   <div class="in">
-    <span class="brand">自进化游戏设计 Agent</span>
-    <a href="#demo">演示</a>
+    <span class="brand"><i></i>自进化游戏设计 Agent</span>
     <a href="#what">我们做什么</a>
+    <a href="#case">案例</a>
     <a href="#base">项目基础</a>
     <a class="cta" href="#join">加入我们</a>
   </div>
@@ -201,60 +321,36 @@ footer{margin-top:48px;text-align:center;font-size:12.5px;color:var(--muted)}
 
 <div class="wrap">
   <header class="hero">
-    <span class="eyebrow-pill"><i></i>五期红鸟项目 · 招募 CMA 方向同学</span>
-    <h1><span class="zh">自进化</span><span class="zh grad">游戏设计</span> Agent</h1>
+    <span class="eyebrow-pill"><i></i>五期红鸟项目 · <b>招募 1 位队友</b> · AI / DSA 以外学域均可</span>
+    <h1><span class="grad-text">自进化游戏设计</span> Agent<span class="en">Self-Evolving Game Design Agent</span></h1>
     <p class="lead">让 Agent <b>自己写游戏、自己进游戏里玩</b>，再根据世界的反馈<b>改自己写的代码</b>。</p>
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span><b>#</b>Game Design</span><span><b>#</b>AI Agent</span><span><b>#</b>World Model</span><span><b>#</b>RSI</span><span><b>#</b>Embodied Intelligence</span><span><b>#</b>Godot</span><span><b>#</b>Self-Correction</span><span><b>#</b>Benchmark</span>
+        <span><b>#</b>Game Design</span><span><b>#</b>AI Agent</span><span><b>#</b>World Model</span><span><b>#</b>RSI</span><span><b>#</b>Embodied Intelligence</span><span><b>#</b>Godot</span><span><b>#</b>Self-Correction</span><span><b>#</b>Benchmark</span>
+      </div>
+    </div>
     <div class="btns">
       <a class="btn primary" href="#join"><svg class="i" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>联系我们</a>
-      <a class="btn" href="#demo"><svg class="i" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>看演示</a>
+      <a class="btn" href="#case"><svg class="i" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>看案例</a>
     </div>
   </header>
 
-  <section id="demo" style="padding-top:8px">
-    <div class="demo">
-      <div class="stage" id="stage">
-        <canvas id="cv" aria-label="3D 演示：角色第一次穿过平台，Agent 修复后第二次正常落地"></canvas>
-        <div class="ov">
-          <div class="l"><span class="chip" id="it">迭代 1</span><span class="chip" id="st"><i></i>待运行</span></div>
-          <span class="hint">拖动画面旋转视角</span>
-        </div>
-        <div class="callout" id="callout" hidden>穿透点</div>
-        <div class="fallback" id="fallback" hidden>3D 场景未能加载</div>
-      </div>
-      <div class="dbar">
-        <div class="stepper" id="stepper">
-          <div class="fill" id="fill"></div>
-          <div class="st"><b>1</b><span>写代码</span></div>
-          <div class="st"><b>2</b><span>进入游戏</span></div>
-          <div class="st"><b>3</b><span>接收反馈</span></div>
-          <div class="st"><b>4</b><span>定位问题</span></div>
-          <div class="st"><b>5</b><span>改代码</span></div>
-          <div class="st"><b>6</b><span>再验证</span></div>
-        </div>
-        <div class="drow">
-          <p class="msg"><span class="it" id="itTag">DEMO</span><span id="msg">角色高速下落时穿过了平台，Agent 自己发现并修好。</span></p>
-          <button class="btn sm" id="runBtn" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>重新运行</button>
-        </div>
-      </div>
-    </div>
-    <p class="cap">演示为浏览器内的示意复现，非 Godot 实录</p>
-  </section>
-
   <section id="what">
-    <div class="sec-h"><span class="kicker">WHAT WE DO</span><h2>我们主要做三件事</h2></div>
+    <div class="sec-h rv"><span class="kicker">WHAT WE DO</span><h2>我们主要做三件事</h2></div>
     <div class="cards">
-      <article class="card">
+      <article class="card glow rv">
         <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
         <h3>自我修正闭环</h3>
         <p>Agent 自己验证、自己修，直到游戏行为正确。</p>
         <div class="flow"><span>写代码</span><span>进游戏</span><span>收反馈</span><span>定位</span><span>改代码</span><span>再验证</span></div>
       </article>
-      <article class="card">
+      <article class="card glow rv">
         <div class="ico b"><svg class="i" viewBox="0 0 24 24"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></div>
         <h3>专治看代码发现不了的 bug</h3>
         <p>穿过坚固平台、异常碰撞这类物理错误，代码能跑，只有在游戏里和玩家交互时才暴露。</p>
       </article>
-      <article class="card">
+      <article class="card glow rv">
         <div class="ico w"><svg class="i" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div>
         <h3>开源游戏交互基准</h3>
         <p>建成并开源 100+ 个可复现的 2D/3D 案例，评测 Agent 设计、完善和修复游戏的能力。</p>
@@ -262,33 +358,149 @@ footer{margin-top:48px;text-align:center;font-size:12.5px;color:var(--muted)}
     </div>
   </section>
 
+  <section id="case">
+    <div class="sec-h rv">
+      <span class="kicker">CASE</span>
+      <h2>举个例子：<span class="grad-text">让 Agent 改造一款城市建造游戏</span></h2>
+      <p>我们给 Agent 一款现成的 3D 城市建造小游戏，外加一段需求。Agent 要自己读代码、改代码，再进游戏里亲手玩一遍，确认每个功能都能用。下面就是这款游戏，可以直接上手玩。</p>
+    </div>
+
+    <div class="play glow rv" id="play">
+      <div class="play-head">
+        <div>
+          <h3>亲手试试：同一款游戏，改造前和改造后</h3>
+          <p class="sub">这是案例里的同一套 3D 模型和示例城市。拖动画面换角度，滚轮缩放，右键平移，点格子盖楼。切到「改造前」再去替换、拆除或撤销，就能碰到原游戏的 bug。</p>
+        </div>
+        <div class="ctrls" role="group" aria-label="选择游戏版本">
+          <button class="ctrl red" type="button" data-mode="before" aria-pressed="false">改造前<small>原游戏的规则</small></button>
+          <button class="ctrl" type="button" data-mode="after" aria-pressed="true">改造后<small>按需求改好的规则</small></button>
+        </div>
+      </div>
+      <div class="play-body">
+        <div class="play-main">
+          <div class="play-stage">
+            <canvas aria-label="可交互的 3D 城市建造场景"></canvas>
+            <div class="hud">
+              <span class="cash">💰 <b>$10000</b></span>
+              <button type="button" data-act="undo">↶ 撤销</button>
+              <button type="button" data-act="redo">↷ 重做</button>
+            </div>
+            <div class="step-tag" hidden></div>
+            <p class="status" aria-live="polite"></p>
+            <div class="play-loading">正在加载 3D 场景…</div>
+          </div>
+          <div class="palette" aria-label="选择要建的东西"></div>
+          <div class="tools">
+            <button type="button" data-act="rotate">⟳ 旋转（R）</button>
+            <button type="button" data-act="demolish">✕ 拆除模式</button>
+            <button type="button" data-act="sample">载入示例城市</button>
+            <button type="button" data-act="clear">清空</button>
+          </div>
+        </div>
+        <aside class="agent">
+          <h4>让 Agent 测一遍</h4>
+          <p>Agent 从一块空地开始，做和真实测试一样的 7 步操作，每一步都核对余额和地图。先在上面选「改造前」或「改造后」。</p>
+          <button class="btn primary sm" type="button" data-act="run">▶ 开始测试</button>
+          <div class="log-wrap">
+            <table class="log"><thead><tr><th>#</th><th>操作</th><th>应该是</th><th>实际</th><th></th></tr></thead><tbody></tbody></table>
+          </div>
+          <p class="log-verdict">还没开始。</p>
+        </aside>
+      </div>
+    </div>
+
+    <div class="how rv">
+      <div class="how-step glow"><span class="how-n">1</span><b>拿到需求</b><p>「给游戏加上撤销 / 重做，钱要算对，存档不能丢。」</p></div>
+      <div class="how-step glow"><span class="how-n">2</span><b>读代码、改代码</b><p>怎么实现由 Agent 自己定，题目不提供参考答案。</p></div>
+      <div class="how-step glow"><span class="how-n">3</span><b>进游戏实际操作</b><p>像玩家一样点鼠标：建造、拆除、撤销、存档、读档。</p></div>
+      <div class="how-step glow"><span class="how-n">4</span><b>看结果是否正确</b><p>钱对不对？撤销后城市回去了吗？存档坏了没有？</p></div>
+    </div>
+
+    <div class="case-grid">
+      <div class="couple glow rv">
+        <h3>难在哪里？</h3>
+        <p class="sub">玩家点一下鼠标，地图、建筑朝向、余额和操作历史要一起变。只要有一样没同步，就会出现「钱扣了楼没盖」「撤销后钱没退」这类 bug。这些代码读起来往往没毛病，要进游戏玩才看得出来。</p>
+        <div class="four">
+          <div><b><i class="em">🗺️</i>地图</b><span>盖了什么</span></div>
+          <div><b><i class="em">🧭</i>朝向</b><span>朝哪边</span></div>
+          <div><b><i class="em">💰</i>余额</b><span>还剩多少钱</span></div>
+          <div><b><i class="em">↩️</i>历史</b><span>能不能撤销</span></div>
+        </div>
+      </div>
+      <div class="rules glow rv">
+        <h3>需求是什么</h3>
+        <ol>
+          <li><span><b>钱要算对</b>：拆掉建筑退一半的钱；钱不够就不让建，什么都不变。</span></li>
+          <li><span><b>能撤销、能重做</b>：楼和钱一起回到之前的样子，而且只退一次。</span></li>
+          <li><span><b>存档靠得住</b>：读档能还原整座城市；坏掉的存档不能把现在的城市弄乱。</span></li>
+          <li><span><b>出错要说清楚</b>：存不进去、磁盘满了，都要提示玩家，而且不能毁掉之前的好存档。</span></li>
+          <li><span><b>原来的玩法不能坏</b>：相机、建筑、价格、示例地图都照常工作。</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="board glow rv">
+      <div class="board-head">
+        <div>
+          <h3>自动验收：8 项能力逐一检查</h3>
+          <p class="sub">改完之后，系统会自动打开游戏、模拟玩家操作，逐项检查。点一下看看两种结果。</p>
+        </div>
+        <div class="ctrls" role="group" aria-label="选择要检查的版本">
+          <button class="ctrl red" type="button" data-ctrl="before" aria-pressed="false">改造前<small>原来的游戏</small></button>
+          <button class="ctrl" type="button" data-ctrl="after" aria-pressed="true">改造后<small>正确完成的版本</small></button>
+        </div>
+      </div>
+      <div class="stages" id="stages">
+        <div class="sg"><span class="n">01</span><b>原有玩法</b><small>建造、相机、价格照常</small><span class="s">…</span></div>
+        <div class="sg"><span class="n">02</span><b>建造与撤销</b><small>替换、撤销、重做</small><span class="s">…</span></div>
+        <div class="sg"><span class="n">03</span><b>钱算得对</b><small>余额和画面一致</small><span class="s">…</span></div>
+        <div class="sg"><span class="n">04</span><b>存档与预算</b><small>读档还原城市</small><span class="s">…</span></div>
+        <div class="sg"><span class="n">05</span><b>长历史</b><small>连续 32 步可撤销</small><span class="s">…</span></div>
+        <div class="sg"><span class="n">06</span><b>存档失败</b><small>写不进去也不出事</small><span class="s">…</span></div>
+        <div class="sg"><span class="n">07</span><b>磁盘写满</b><small>不留半截存档</small><span class="s">…</span></div>
+        <div class="sg"><span class="n">08</span><b>界面可用</b><small>按钮和提示正确</small><span class="s">…</span></div>
+      </div>
+      <div class="verdict" id="verdict" aria-live="polite"></div>
+    </div>
+
+    <p class="foot-note">「亲手试试」是在网页里复刻的版本：改造前按原游戏代码的规则，改造后按需求的规则；第 2 步的余额与真实测试记录一致。案例游戏改编自 Kenney 的 Starter Kit City Builder（代码 MIT，美术与音效 CC0）。</p>
+  </section>
+
   <section id="base">
-    <div class="sec-h"><span class="kicker">FOUNDATION</span><h2>项目基础</h2></div>
+    <div class="sec-h rv"><span class="kicker">FOUNDATION</span><h2>项目基础</h2></div>
     <div class="stats">
-      <div class="stat"><div class="n a">100+</div><p>计划开源的 2D/3D 游戏交互案例</p></div>
-      <div class="stat"><div class="n">Pipeline</div><p>相对成熟的 Agentic 环境与数据合成 pipeline</p></div>
-      <div class="stat"><div class="n">Godot</div><p>游戏引擎 + Blender 合成 3D 数据场景</p></div>
-      <div class="stat"><div class="n w">Sandbox</div><p>沙盒运行，每个案例都可复现</p></div>
+      <div class="stat glow rv"><div class="n a">100+</div><p>计划开源的 2D/3D 游戏交互案例</p></div>
+      <div class="stat glow rv"><div class="n">Pipeline</div><p>相对成熟的 Agentic 环境与数据合成 pipeline</p></div>
+      <div class="stat glow rv"><div class="n">Godot</div><p>游戏引擎 + Blender 合成 3D 数据场景</p></div>
+      <div class="stat glow rv"><div class="n w">Sandbox</div><p>沙盒运行，每个案例都可复现</p></div>
     </div>
   </section>
 
   <section id="join">
-    <div class="join">
+    <div class="join glow rv">
       <div>
         <span class="kicker">JOIN US</span>
-        <h2 style="margin-top:10px">招募一位 CMA 方向的同学</h2>
+        <h2 style="margin-top:10px">招募一位<span class="grad-text">新队友</span></h2>
         <p class="about">团队目前有 5 名成员，来自 DSA 与 AI 学域，方向包括 Tool-use Agent 的训练与自进化、视频生成与世界模型。成员本科毕业于国内优秀院校，有商汤、上海 AI Lab 和快手等企业的工业界一线实习经验，也有诸多顶会论文发表经历。</p>
-        <div class="vibe"><span>氛围轻松</span><span>时间灵活 flexible</span><span>偏 research</span></div>
+        <p class="about">这次想找一位 AI / DSA 以外学域的同学。方向不设限，对这个项目感兴趣、有一定相关经验就行。</p>
         <div class="team">
           <span><b>DSA</b>已就位</span>
           <span><b>AI</b>已就位</span>
-          <span class="open"><b>CMA</b>等你加入</span>
+          <span class="open"><b>其他学域</b>等你加入</span>
+        </div>
+        <p class="topics-lbl">比如这些话题：</p>
+        <div class="topics">
+          <span style="--c:#f5a54a"><i></i>Game Design</span>
+          <span style="--c:#5b9dff"><i></i>AI Agent</span>
+          <span style="--c:#a78bfa"><i></i>World Model</span>
+          <span style="--c:#3fdc97"><i></i>RSI · 递归自我改进</span>
+          <span style="--c:#ff6b8e"><i></i>Embodied Intelligence</span>
         </div>
         <ul class="checks">
-          <li><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>对游戏设计 / 美学比较了解</li>
           <li><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>不给压力，按自己的节奏参与，研究成果会投稿 AI 会议</li>
           <li><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>欢迎把你自己的方向结合进来</li>
         </ul>
+        <div class="vibe"><span>氛围轻松</span><span>时间灵活 flexible</span><span>偏 research</span></div>
       </div>
       <div class="contact">
         <div class="t">欢迎来聊</div>
@@ -300,341 +512,76 @@ footer{margin-top:48px;text-align:center;font-size:12.5px;color:var(--muted)}
     </div>
   </section>
 
-  <footer>五期红鸟项目 · 自进化游戏设计 Agent</footer>
+  <footer>
+    <span>五期红鸟项目 · 自进化游戏设计 Agent</span>
+    <span>案例游戏素材：<a href="https://kenney.nl" target="_blank" rel="noreferrer">Kenney</a>（MIT / CC0）</span>
+  </footer>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-(function(){
-  const $ = s => document.querySelector(s);
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sts = [...document.querySelectorAll('.st')], fill = $('#fill');
-  const runBtn = $('#runBtn'), msg = $('#msg'), stEl = $('#st'), itEl = $('#it'), itTag = $('#itTag'), callout = $('#callout');
 
-  document.querySelectorAll('.cp').forEach(btn => btn.addEventListener('click', () => {
-    const el = document.getElementById(btn.dataset.copy), txt = el.textContent.trim();
-    const done = t => { btn.textContent = t; btn.classList.add('ok'); setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('ok'); }, 1600); };
-    const sel = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); done('已选中'); };
-    try { navigator.clipboard.writeText(txt).then(() => done('已复制'), sel); } catch (e) { sel(); }
+<script>
+/* Page chrome: reveal, card spotlight, active nav, stage board. */
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // reveal on scroll
+  const rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce){
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+    rv.forEach(el => io.observe(el));
+  } else rv.forEach(el => el.classList.add('in'));
+
+  // cursor spotlight on glow cards
+  document.querySelectorAll('.glow').forEach(el => el.addEventListener('pointermove', e => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (e.clientY - r.top) + 'px');
   }));
 
-  function setStep(i, it){
-    sts.forEach((s, k) => { s.classList.toggle('on', k === i); s.classList.toggle('past', i >= 0 && k < i); });
-    fill.style.width = (Math.max(0, Math.min(i, 5)) / 5 * 83.34) + '%';
-    if (it){ itEl.textContent = '迭代 ' + it; itTag.textContent = 'ITER ' + it; }
-  }
-  function setState(t, c){ stEl.innerHTML = '<i></i>' + t; stEl.className = 'chip' + (c ? ' ' + c : ''); }
+  // active nav link
+  const links = [...document.querySelectorAll('.nav a[href^="#"]')];
+  const secs = links.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  const onScroll = () => {
+    let cur = null;
+    secs.forEach(s => { if (s.getBoundingClientRect().top < innerHeight * .35) cur = s; });
+    links.forEach(a => a.classList.toggle('on', !!cur && a.getAttribute('href') === '#' + cur.id && !a.classList.contains('cta')));
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  /* ---------- deterministic sim ---------- */
-  const G = 30, SPEED = 4, DT = 1/60, R = 0.36, H = 1.3;
-  const BOXES = [
-    { x0: -6, x1: -3, top: 4, th: 10 },
-    { x0: -2, x1: 7, top: -2, th: 0.2 }
-  ];
-  const KILL = -6, START_X = -5.2, JUMP_AT = -3.35, GOAL_X = 5.9;
-  let JUMP_V = 3;
-  function newState(){ return { x: START_X, y: 4, vx: 0, vy: 0, ground: BOXES[0], jumped: false, done: null, tunnel: null }; }
-  function step(s, mode){
-    if (s.done) return;
-    s.vx = s.x < GOAL_X ? SPEED : 0;
-    if (s.ground === BOXES[1] && s.x >= GOAL_X){ s.done = 'pass'; s.vx = 0; return; }
-    if (s.ground && !s.jumped && s.x >= JUMP_AT){ s.vy = JUMP_V; s.ground = null; s.jumped = true; }
-    if (!s.ground) s.vy -= G * DT;
-    const py = s.y, px = s.x;
-    s.x += s.vx * DT; s.y += s.vy * DT;
-    if (s.ground){ if (s.x < s.ground.x0 || s.x > s.ground.x1) s.ground = null; else { s.y = s.ground.top; s.vy = 0; } }
-    if (!s.ground){
-      for (const b of BOXES){
-        if (s.x < b.x0 || s.x > b.x1) continue;
-        const overlap = s.y <= b.top && s.y >= b.top - b.th, swept = py >= b.top && s.y <= b.top;
-        if ((mode === 'bug' ? overlap : overlap || swept) && s.vy <= 0){ s.y = b.top; s.vy = 0; s.ground = b; break; }
-        if (mode === 'bug' && b === BOXES[1] && !s.tunnel && py >= b.top && s.y < b.top - b.th) s.tunnel = { x: (px + s.x) / 2 };
-      }
-    }
-    if (s.y < KILL) s.done = 'fail';
-  }
-  function simulate(mode, jv){ JUMP_V = jv; const s = newState(); for (let i = 0; i < 3000 && !s.done; i++) step(s, mode); return s; }
-  let chosen = 3;
-  for (let j = 2; j <= 8; j += 0.05){ const a = simulate('bug', j), b = simulate('fix', j); if (a.done === 'fail' && a.tunnel && b.done === 'pass'){ chosen = j; break; } }
-  JUMP_V = chosen;
-
-  /* ---------- 3D ---------- */
-  const has3D = typeof THREE !== 'undefined';
-  const stage = $('#stage'), canvas = $('#cv');
-  const tok = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim() || '#888888';
-  let renderer, scene, camera, charG, charIn, trail1, trail2, ring, goalRing, grid, danger, flagMat, dotTex;
-  const mats = {}, bobbers = [], clouds = [], confetti = [];
-  const HOME = { az: -0.36, el: 0.24, dist: 19, tx: 0.6, ty: 0.5 };
-  const cam = Object.assign({}, HOME), camT = Object.assign({}, HOME);
-  let dragging = false, focus = false, squash = 0, dangerT = 0;
-
-  function rbox(w, h, d, r){
-    const b = Math.min(r, h * 0.45, w * 0.45, d * 0.45);
-    const sw = w - 2 * b, sh = h - 2 * b, cr = Math.min(b, sw / 2, sh / 2) * 0.9;
-    const s = new THREE.Shape(), x = -sw / 2, y = -sh / 2;
-    s.moveTo(x + cr, y); s.lineTo(x + sw - cr, y); s.quadraticCurveTo(x + sw, y, x + sw, y + cr);
-    s.lineTo(x + sw, y + sh - cr); s.quadraticCurveTo(x + sw, y + sh, x + sw - cr, y + sh);
-    s.lineTo(x + cr, y + sh); s.quadraticCurveTo(x, y + sh, x, y + sh - cr);
-    s.lineTo(x, y + cr); s.quadraticCurveTo(x, y, x + cr, y);
-    const g = new THREE.ExtrudeGeometry(s, { depth: Math.max(0.001, d - 2 * b), bevelEnabled: true, bevelThickness: b, bevelSize: b, bevelSegments: 3, curveSegments: 5 });
-    g.translate(0, 0, -(d - 2 * b) / 2); g.computeVertexNormals(); return g;
-  }
-  function mesh(geo, mat, x, y, z, parent){ const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true; (parent || scene).add(m); return m; }
-  function island(w, d, top, depth, parent){
-    const g = new THREE.Group();
-    mesh(rbox(w, 0.42, d, 0.16), mats.grass, 0, top - 0.21, 0, g);
-    mesh(rbox(w * 0.96, 0.9, d * 0.94, 0.14), mats.stone, 0, top - 0.85, 0, g);
-    const c = mesh(new THREE.ConeGeometry(Math.min(w, d) * 0.55, depth, 7), mats.stoneFlat, 0, top - 1.3 - depth / 2, 0, g);
-    c.rotation.x = Math.PI; c.scale.x = w / Math.min(w, d);
-    (parent || scene).add(g); return g;
-  }
-  function tree(x, z, top, s, parent){
-    const g = new THREE.Group(); g.position.set(x, top, z); g.scale.setScalar(s);
-    mesh(new THREE.CylinderGeometry(0.07, 0.1, 0.5, 6), mats.wood, 0, 0.25, 0, g);
-    mesh(new THREE.IcosahedronGeometry(0.42, 0), mats.leaf, 0, 0.75, 0, g);
-    mesh(new THREE.IcosahedronGeometry(0.3, 0), mats.leaf, 0.05, 1.08, 0.02, g);
-    (parent || scene).add(g);
-  }
-  function dotTexture(){
-    const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d');
-    const gr = x.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.55, 'rgba(255,255,255,.9)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
-    x.fillStyle = gr; x.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c);
-  }
-  function makeTrail(){
-    const g = new THREE.BufferGeometry();
-    g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(800 * 3), 3)); g.setDrawRange(0, 0);
-    const p = new THREE.Points(g, new THREE.PointsMaterial({ size: 0.22, map: dotTex, transparent: true, depthWrite: false, opacity: 0.95 }));
-    p.userData.n = 0; scene.add(p); return p;
-  }
-  function resetTrail(p){ if (!p) return; p.userData.n = 0; p.geometry.setDrawRange(0, 0); p.material.opacity = 0.95; }
-  function pushTrail(p, x, y){ if (!p || p.userData.n >= 800) return; const a = p.geometry.attributes.position, n = p.userData.n++; a.setXYZ(n, x, y, 0); a.needsUpdate = true; p.geometry.setDrawRange(0, p.userData.n); }
-
-  function build3D(){
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2)); renderer.setClearColor(0x000000, 0);
-    renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    scene = new THREE.Scene(); scene.fog = new THREE.Fog(0xffffff, 22, 48);
-    camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
-    dotTex = dotTexture();
-
-    mats.hemi = new THREE.HemisphereLight(0xffffff, 0xe8d8c4, 0.72); scene.add(mats.hemi);
-    const sun = new THREE.DirectionalLight(0xffffff, 0.78); sun.position.set(-5, 14, 10); sun.castShadow = true;
-    sun.shadow.mapSize.set(2048, 2048); sun.shadow.radius = 4; sun.shadow.bias = -0.0008;
-    Object.assign(sun.shadow.camera, { left: -12, right: 12, top: 10, bottom: -10, near: 1, far: 40 }); scene.add(sun);
-    mats.rim = new THREE.DirectionalLight(0xffffff, 0.35); mats.rim.position.set(8, 4, -10); scene.add(mats.rim);
-
-    const std = o => new THREE.MeshStandardMaterial(Object.assign({ roughness: 0.8, metalness: 0 }, o));
-    mats.grass = std({ roughness: 0.9 }); mats.leaf = std({ flatShading: true, roughness: 0.9 });
-    mats.stone = std({ roughness: 0.95 }); mats.stoneFlat = std({ flatShading: true, roughness: 0.95 });
-    mats.wood = std({ roughness: 0.75 }); mats.wood2 = std({ roughness: 0.75 });
-    mats.hero = std({ roughness: 0.35 });
-    mats.visor = new THREE.MeshStandardMaterial({ color: 0x1a2236, roughness: 0.25, metalness: 0.2 });
-    mats.eye = new THREE.MeshBasicMaterial({ color: 0xffffff });
-    mats.edge = new THREE.LineBasicMaterial({ transparent: true, opacity: 0.9 });
-    mats.bug = new THREE.MeshBasicMaterial(); mats.ok = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.8 });
-    mats.cloud = std({ roughness: 1, transparent: true, opacity: 0.92 });
-    mats.danger = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide });
-    flagMat = std({ side: THREE.DoubleSide, roughness: 0.6 });
-
-    // start island + trees
-    island(3.2, 2.8, BOXES[0].top, 2.6).position.x = -4.5;
-    tree(-5.55, -0.85, 4, 1.05); tree(-4.1, -0.95, 4, 0.8); tree(-5.7, 0.95, 4, 0.7);
-
-    // bridge planks x -2..5
-    const top = BOXES[1].top;
-    for (let i = 0; i < 7; i++){
-      mesh(rbox(0.9, 0.2, 1.7, 0.05), i % 2 ? mats.wood : mats.wood2, -1.5 + i, top - 0.1, 0);
-    }
-    [-0.92, 0.92].forEach(z => {
-      [-1.95, 5].forEach(x => mesh(new THREE.CylinderGeometry(0.06, 0.07, 0.8, 8), mats.wood, x, top + 0.3, z));
-      const rope = mesh(new THREE.CylinderGeometry(0.025, 0.025, 6.95, 6), mats.wood2, 1.52, top + 0.62, z);
-      rope.rotation.z = Math.PI / 2;
+  // stage board
+  const STAGES = 8;
+  const DATA = {
+    before: { s: ['green', 'red'], label: '改造前：原来的游戏', note: '原有玩法没问题，但第 2 项就卡住了：替换建筑的钱算错，撤销 / 重做完全不工作。后面几项就没有再测。', ok: false },
+    after:  { s: Array(STAGES).fill('green'), label: '改造后：正确完成的版本', note: '8 项全部通过，一共自动跑了 205 项细项检查。', ok: true }
+  };
+  const sgs = [...document.querySelectorAll('#stages .sg')], verdict = document.getElementById('verdict');
+  const ctrls = [...document.querySelectorAll('.board .ctrl')];
+  const TXT = { green: '✓ 通过', red: '✗ 不通过', notrun: '未测' };
+  let timers = [];
+  function show(key){
+    const d = DATA[key];
+    ctrls.forEach(b => b.setAttribute('aria-pressed', b.dataset.ctrl === key ? 'true' : 'false'));
+    timers.forEach(clearTimeout); timers = [];
+    sgs.forEach(sg => { sg.className = 'sg'; sg.querySelector('.s').textContent = '…'; });
+    sgs.forEach((sg, i) => {
+      const st = d.s[i] || 'notrun';
+      timers.push(setTimeout(() => {
+        sg.className = 'sg ' + st + (st === 'notrun' ? '' : ' flash');
+        sg.querySelector('.s').textContent = TXT[st];
+        timers.push(setTimeout(() => sg.classList.remove('flash'), 300));
+      }, reduce ? 0 : 90 * i));
     });
-    const edge = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(7.02, 0.22, 1.74)), mats.edge);
-    edge.position.set(1.5, top - 0.1, 0); scene.add(edge);
-
-    // goal island x 5..7
-    const gi = island(2.2, 2.4, top, 1.8); gi.position.x = 6.05;
-    tree(6.7, -0.85, top, 0.75);
-    mesh(new THREE.CylinderGeometry(0.04, 0.04, 2.1, 8), mats.stone, 6.35, top + 1.05, 0.2);
-    const flag = mesh(new THREE.PlaneGeometry(0.75, 0.46), flagMat, 6.73, top + 1.83, 0.2); flag.castShadow = false;
-    goalRing = new THREE.Mesh(new THREE.TorusGeometry(0.55, 0.04, 8, 48), mats.ok);
-    goalRing.rotation.x = Math.PI / 2; goalRing.position.set(GOAL_X, top + 0.03, 0); scene.add(goalRing);
-
-    // background floating islands + clouds
-    [[-11, 1.5, -9, 2.2], [11, 3.2, -11, 2.6], [3.5, 6.5, -15, 1.8], [-6, -3.5, -12, 1.6]].forEach(([x, y, z, w], k) => {
-      const g = island(w, w * 0.9, 0, w * 0.9); g.position.set(x, y, z); g.userData = { y, ph: k * 1.7 }; bobbers.push(g);
-      if (k % 2 === 0) tree(0.1, 0, 0, 0.7, g);
-    });
-    [[-8, 6, -7], [6, 7.5, -9], [14, 4.5, -13], [-14, 5, -14]].forEach(([x, y, z], k) => {
-      const c = new THREE.Group();
-      [[0, 0, 0, 0.8], [0.8, -0.1, 0.1, 0.6], [-0.75, -0.15, 0, 0.55], [0.3, 0.35, -0.1, 0.55]].forEach(([a, b, d, r]) => { const m = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 12), mats.cloud); m.position.set(a, b, d); c.add(m); });
-      c.position.set(x, y, z); c.userData = { sp: 0.25 + k * 0.08 }; scene.add(c); clouds.push(c);
-    });
-
-    // void + danger flash
-    danger = new THREE.Mesh(new THREE.PlaneGeometry(30, 14), mats.danger); danger.rotation.x = -Math.PI / 2; danger.position.y = KILL + 0.02; scene.add(danger);
-
-    // character
-    charG = new THREE.Group(); charIn = new THREE.Group(); charG.add(charIn);
-    const body = new THREE.Mesh(new THREE.CylinderGeometry(R, R, H - 2 * R, 24), mats.hero); body.position.y = H / 2;
-    const s1 = new THREE.Mesh(new THREE.SphereGeometry(R, 24, 16), mats.hero); s1.position.y = R;
-    const s2 = s1.clone(); s2.position.y = H - R;
-    [body, s1, s2].forEach(m => { m.castShadow = true; charIn.add(m); });
-    const visor = new THREE.Mesh(rbox(0.46, 0.26, 0.2, 0.1), mats.visor); visor.position.set(0.1, H - R, R * 0.78); charIn.add(visor);
-    [0.0, 0.2].forEach(x => { const e = new THREE.Mesh(new THREE.SphereGeometry(0.04, 10, 8), mats.eye); e.position.set(x, H - R + 0.02, R * 0.78 + 0.1); charIn.add(e); });
-    const pack = mesh(rbox(0.36, 0.44, 0.22, 0.08), mats.wood, -R * 0.75, H * 0.52, 0, charIn); pack.rotation.y = Math.PI / 2;
-    scene.add(charG);
-
-    trail1 = makeTrail(); trail2 = makeTrail();
-    ring = new THREE.Mesh(new THREE.TorusGeometry(0.55, 0.04, 10, 48), mats.bug); ring.visible = false; scene.add(ring);
-
-    applyTheme(); resize(); placeChar(newState(), 0);
-    new ResizeObserver(resize).observe(stage);
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
-    new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-
-    let drag = null;
-    canvas.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, type: e.pointerType }; dragging = true; });
-    addEventListener('pointerup', () => { drag = null; dragging = false; });
-    addEventListener('pointermove', e => {
-      if (!drag) return;
-      const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.x = e.clientX; drag.y = e.clientY;
-      camT.az = Math.max(-1.2, Math.min(1.2, camT.az - dx * 0.006));
-      if (drag.type === 'mouse') camT.el = Math.max(0.02, Math.min(0.95, camT.el + dy * 0.004));
-    });
+    verdict.innerHTML = '<span class="big ' + (d.ok ? 'ok' : 'bad') + '">' + (d.ok ? '通过' : '未通过') + '</span>' +
+      '<span><b style="color:var(--ink)">' + d.label + '</b><br>' + d.note + '</span>';
   }
-  function applyTheme(){
-    if (!scene) return;
-    const c = (m, t) => m.color.set(tok(t));
-    c(mats.grass, '--grass'); c(mats.leaf, '--leaf'); c(mats.stone, '--stone'); c(mats.stoneFlat, '--stone');
-    c(mats.wood, '--wood'); mats.wood2.color.set(tok('--wood')).multiplyScalar(0.88);
-    c(mats.hero, '--hero'); c(mats.edge, '--accent'); c(mats.bug, '--bug'); c(mats.ok, '--ok'); c(mats.cloud, '--cloud'); c(mats.danger, '--bug');
-    trail1.material.color.set(tok('--bug')); trail2.material.color.set(tok('--ok'));
-    flagMat.color.set(tok(flagMat.userData.pass ? '--ok' : '--accent'));
-    scene.fog.color.set(tok('--stage'));
-    const dark = new THREE.Color(tok('--bg')).getHSL({}).l < 0.5;
-    mats.hemi.intensity = dark ? 0.55 : 0.72; mats.rim.color.set(tok('--accent')); mats.rim.intensity = dark ? 0.5 : 0.3;
-    if (grid){ scene.remove(grid); grid.geometry.dispose(); }
-    grid = new THREE.GridHelper(40, 40, tok('--line-2'), tok('--line-2')); grid.position.y = KILL; scene.add(grid);
-  }
-  function resize(){ if (!renderer) return; const w = stage.clientWidth, h = stage.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
-  function placeChar(s, t){
-    if (!charG) return;
-    charG.position.set(s.x, Math.max(s.y, KILL - 1), 0);
-    const walking = s.ground && s.vx > 0 && !s.done;
-    charIn.position.y = walking && !reduce ? Math.abs(Math.sin(t * 13)) * 0.07 : 0;
-    const stretch = s.ground ? 1 : 1 + Math.min(0.28, Math.max(0, -s.vy * 0.012));
-    const sq = 1 - 0.28 * squash;
-    charIn.scale.set(1 / Math.sqrt(stretch * sq), stretch * sq, 1 / Math.sqrt(stretch * sq));
-    charIn.rotation.z = walking ? -0.08 : 0;
-  }
-  function updateCamera(dt, t){
-    const k = reduce ? 1 : 1 - Math.pow(0.02, dt);
-    for (const key in cam) cam[key] += (camT[key] - cam[key]) * k;
-    const sway = (!dragging && !focus && !reduce) ? Math.sin(t * 0.25) * 0.06 : 0;
-    const d = cam.dist * (camera.aspect < 0.9 ? 1.8 : camera.aspect < 1.3 ? 1.35 : camera.aspect < 1.75 ? 1.12 : 1);
-    const az = cam.az + sway;
-    camera.position.set(cam.tx + d * Math.sin(az) * Math.cos(cam.el), cam.ty + d * Math.sin(cam.el), d * Math.cos(az) * Math.cos(cam.el));
-    camera.lookAt(cam.tx, cam.ty, 0);
-  }
-  function burst(){
-    if (!scene || reduce) return;
-    const cols = ['--accent', '--warm', '--ok', '--bug', '--hero'];
-    for (let i = 0; i < 46; i++){
-      const m = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.1, 0.03), new THREE.MeshBasicMaterial({ color: tok(cols[i % cols.length]), transparent: true, side: THREE.DoubleSide }));
-      m.position.set(GOAL_X, BOXES[1].top + 1.4, 0);
-      m.userData = { v: new THREE.Vector3((Math.random() - 0.5) * 5, 4 + Math.random() * 4, (Math.random() - 0.5) * 4), r: new THREE.Vector3(Math.random() * 8, Math.random() * 8, 0), life: 1.8 };
-      scene.add(m); confetti.push(m);
-    }
-  }
+  ctrls.forEach(b => b.addEventListener('click', () => show(b.dataset.ctrl)));
+  show('after');
 
-  /* ---------- run loop ---------- */
-  let sim = null, lastS = newState(), last = performance.now(), runId = 0, clock = 0;
-  function play(mode){ return new Promise(res => { sim = { s: newState(), mode, res, acc: 0, trail: mode === 'bug' ? trail1 : trail2, finished: false, g: true }; resetTrail(sim.trail); setState('运行中', 'run'); }); }
-  function frame(now){
-    const dt = Math.min(0.05, (now - last) / 1000); last = now; clock += dt;
-    if (sim && !sim.finished){
-      const s = sim.s, near = !s.ground && s.y < 0 && s.y > -3.8 && s.x > -2.6;
-      sim.acc += dt * (reduce ? 1 : near ? 0.18 : 1);
-      while (sim.acc >= DT && !s.done){
-        sim.acc -= DT; step(s, sim.mode);
-        if (has3D) pushTrail(sim.trail, s.x, s.y + H / 2);
-        const g = !!s.ground; if (g && !sim.g) squash = 1; sim.g = g;
-      }
-      if (s.done){ sim.finished = true; const r = sim.res; if (s.done === 'fail') dangerT = 1; setTimeout(() => r(s), 550); }
-      lastS = s;
-    }
-    squash = Math.max(0, squash - dt * 4);
-    if (renderer){
-      placeChar(lastS, clock);
-      updateCamera(dt, clock);
-      bobbers.forEach(b => { b.position.y = b.userData.y + (reduce ? 0 : Math.sin(clock * 0.8 + b.userData.ph) * 0.25); });
-      clouds.forEach(c => { if (!reduce){ c.position.x += c.userData.sp * dt; if (c.position.x > 20) c.position.x = -20; } });
-      if (goalRing){ const k = 1 + (reduce ? 0 : 0.08 * Math.sin(clock * 3)); goalRing.scale.set(k, k, k); }
-      if (ring && ring.visible){
-        const k = 1 + 0.18 * Math.sin(clock * 6); ring.scale.set(k, k, k);
-        const v = ring.position.clone(); v.y += 0.2; v.project(camera);
-        callout.style.left = ((v.x + 1) / 2 * stage.clientWidth) + 'px';
-        callout.style.top = ((1 - v.y) / 2 * stage.clientHeight) + 'px';
-      }
-      dangerT = Math.max(0, dangerT - dt * 0.8); mats.danger.opacity = 0.28 * dangerT;
-      for (let i = confetti.length - 1; i >= 0; i--){
-        const m = confetti[i], u = m.userData; u.life -= dt;
-        u.v.y -= 9 * dt; m.position.addScaledVector(u.v, dt); m.rotation.x += u.r.x * dt; m.rotation.y += u.r.y * dt;
-        m.material.opacity = Math.min(1, u.life);
-        if (u.life <= 0){ scene.remove(m); m.geometry.dispose(); m.material.dispose(); confetti.splice(i, 1); }
-      }
-      renderer.render(scene, camera);
-    }
-    requestAnimationFrame(frame);
-  }
-  const wait = ms => new Promise(r => setTimeout(r, reduce ? Math.min(ms, 600) : ms));
-
-  async function runLoop(){
-    const id = ++runId, alive = () => id === runId;
-    sim = null; lastS = newState(); resetTrail(trail1); resetTrail(trail2); if (ring) ring.visible = false; callout.hidden = true; focus = false;
-    if (flagMat){ flagMat.userData.pass = false; flagMat.color.set(tok('--accent')); }
-    Object.assign(camT, HOME); runBtn.disabled = true;
-
-    setStep(0, 1); setState('编写中'); msg.textContent = 'Agent 写好了角色移动与碰撞代码。';
-    await wait(1300); if (!alive()) return;
-    setStep(1, 1); msg.textContent = 'Agent 进入游戏，自己操作角色：跑到边缘，跳上木桥。';
-    const r1 = await play('bug'); if (!alive()) return;
-
-    setStep(2, 1); setState('失败', 'fail'); msg.textContent = '世界反馈：角色没落在桥上，直接穿了过去，掉出关卡。';
-    await wait(1700); if (!alive()) return;
-
-    setStep(3, 1);
-    if (r1.tunnel && ring){ ring.position.set(r1.tunnel.x, BOXES[1].top - 0.1, 0); ring.visible = true; callout.hidden = false; focus = true; Object.assign(camT, { tx: r1.tunnel.x + 0.5, ty: -1.8, dist: 8.5, az: -0.22, el: 0.16 }); }
-    msg.textContent = '定位：下落太快，一帧就跨过了 0.2 m 厚的桥面，碰撞检测漏掉了。';
-    await wait(2800); if (!alive()) return;
-
-    setStep(4, 2); setState('修复中'); msg.textContent = '改代码：把逐帧重叠检测换成连续碰撞检测。';
-    await wait(1700); if (!alive()) return;
-
-    setStep(5, 2); if (ring) ring.visible = false; callout.hidden = true; focus = false; trail1.material.opacity = 0.28; Object.assign(camT, HOME);
-    msg.textContent = '再验证：同样的操作重新玩一遍。';
-    const r2 = await play('fix'); if (!alive()) return;
-    if (r2.done === 'pass'){
-      setState('通过', 'pass'); burst();
-      if (flagMat){ flagMat.userData.pass = true; flagMat.color.set(tok('--ok')); }
-      msg.textContent = '通过：角色稳稳落在桥上，走到了终点。';
-    }
-    setStep(6, 2); runBtn.disabled = false;
-  }
-  runBtn.addEventListener('click', runLoop);
-
-  if (has3D){ try { build3D(); } catch (e) { console.error(e); $('#fallback').hidden = false; } } else $('#fallback').hidden = false;
-  requestAnimationFrame(t => { last = t; requestAnimationFrame(frame); });
-  setStep(-1);
-  if (!reduce){
-    let started = false;
-    const io = new IntersectionObserver(es => { if (!started && es.some(e => e.isIntersecting)){ started = true; setTimeout(runLoop, 600); io.disconnect(); } });
-    io.observe(stage);
-  }
 })();
 </script>
 
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="case/play.js"></script>
 </body>
 </html>
