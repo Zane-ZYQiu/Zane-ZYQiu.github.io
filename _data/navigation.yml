@@ -30,6 +30,9 @@ main:
   - title: "Service"
     url: /#service
 
+  - title: "Meet"
+    url: /#meet
+
   # - title: "Talks"
   #   url: /talks/
 
