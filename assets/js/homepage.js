@@ -1,9 +1,8 @@
 /* Single-page homepage behaviour: theme toggle, scroll reveal, active nav
-   link, collapsible abstracts, BibTeX blocks and the click fireworks.
+   link, collapsible abstracts and author lists, and BibTeX blocks.
    Adapted from Ruihong Shen's homepage (https://github.com/ruihong04/ruihong04.github.io). */
 (function () {
   var root = document.documentElement;
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var systemDark = window.matchMedia('(prefers-color-scheme: dark)');
 
   function storedTheme() {
@@ -169,116 +168,6 @@
     });
   }
 
-  /* --- Click fireworks (2D canvas port of the original WebGL version) ---- */
-
-  var FIREWORK_PALETTES = {
-    light: { colors: ['#18336d', '#1a44a2', '#2259bc', '#3570cb', '#558bd5'], blend: 'source-over' },
-    dark: { colors: ['#eaf1fb', '#d0e1f5', '#9ec3f2', '#6ea2e5', '#4b80d6'], blend: 'lighter' }
-  };
-
-  function bindFireworks() {
-    if (reducedMotion.matches) return;
-
-    var canvas = document.createElement('canvas');
-    canvas.className = 'fireworks-canvas';
-    canvas.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(canvas);
-
-    var ctx = canvas.getContext('2d');
-    var bursts = [];
-    var width = 0;
-    var height = 0;
-    var running = false;
-    var last = 0;
-
-    function resize() {
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function rand(min, max) {
-      return min + Math.random() * (max - min);
-    }
-
-    function spawn(x, y) {
-      var palette = FIREWORK_PALETTES[root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'];
-      var count = width <= 820 ? 36 : 54;
-      var particles = [];
-      for (var i = 0; i < count; i += 1) {
-        var angle = Math.random() * Math.PI * 2;
-        var glow = i >= count - 6;
-        var speed = glow ? rand(30, 70) : rand(100, 230);
-        var radius = glow ? rand(3, 8) : rand(6, 14);
-        particles.push({
-          x: x + Math.cos(angle) * radius,
-          y: y + Math.sin(angle) * radius,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed + rand(-20, 20),
-          size: glow ? rand(3.5, 5.5) : rand(1.4, 2.8),
-          alpha: glow ? rand(0.18, 0.3) : rand(0.5, 0.85),
-          color: palette.colors[Math.floor(Math.random() * palette.colors.length)]
-        });
-      }
-      bursts.push({ particles: particles, age: 0, life: rand(0.85, 1.2), blend: palette.blend });
-      if (bursts.length > 10) bursts.shift();
-      if (!running) {
-        running = true;
-        last = performance.now();
-        window.requestAnimationFrame(frame);
-      }
-    }
-
-    function frame(now) {
-      var dt = Math.min((now - last) / 1000, 1 / 24);
-      last = now;
-      ctx.clearRect(0, 0, width, height);
-
-      for (var b = bursts.length - 1; b >= 0; b -= 1) {
-        var burst = bursts[b];
-        burst.age += dt;
-        var progress = Math.min(burst.age / burst.life, 1);
-        var fade = (1 - progress) * (1 - progress);
-        var drag = Math.pow(0.93, dt * 60);
-        ctx.globalCompositeOperation = burst.blend;
-
-        burst.particles.forEach(function (p) {
-          p.vx *= drag;
-          p.vy = p.vy * drag + 520 * dt;
-          p.x += p.vx * dt;
-          p.y += p.vy * dt;
-          ctx.globalAlpha = p.alpha * fade;
-          ctx.fillStyle = p.color;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * (0.6 + 0.4 * (1 - progress)), 0, Math.PI * 2);
-          ctx.fill();
-        });
-
-        if (progress >= 1) bursts.splice(b, 1);
-      }
-
-      ctx.globalAlpha = 1;
-      ctx.globalCompositeOperation = 'source-over';
-
-      if (bursts.length) {
-        window.requestAnimationFrame(frame);
-      } else {
-        running = false;
-        ctx.clearRect(0, 0, width, height);
-      }
-    }
-
-    resize();
-    window.addEventListener('resize', resize, { passive: true });
-    window.addEventListener('click', function (event) {
-      if (event.button !== 0) return;
-      spawn(event.clientX, event.clientY);
-    }, { passive: true });
-  }
-
   /* --- Init -------------------------------------------------------------- */
 
   updateNavMetrics();
@@ -289,5 +178,4 @@
   bindAbstracts();
   bindBibtex();
   bindAuthorLists();
-  bindFireworks();
 })();
