@@ -421,6 +421,39 @@ strong {
   font-size: 0.94rem;
 }
 
+.pub-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+}
+
+.pub-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pub-legend sup,
+.paper-authors sup {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.pub-legend sup {
+  font-size: 1.05em;
+  line-height: 0;
+  position: relative;
+  top: 0.1em;
+}
+
+.bar-key {
+  display: inline-block;
+  width: 3px;
+  height: 1.05em;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
 /* --- Intro --------------------------------------------------------------- */
 
 .profile-grid {
@@ -886,6 +919,23 @@ strong {
   text-decoration-color: rgba(var(--accent-1-rgb), 0.6);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
+}
+
+.authors-toggle {
+  margin-left: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.authors-toggle:hover {
+  color: var(--accent-bright);
 }
 
 .paper-note {

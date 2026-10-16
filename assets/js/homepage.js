@@ -154,6 +154,21 @@
     });
   }
 
+  function bindAuthorLists() {
+    document.querySelectorAll('[data-authors]').forEach(function (list) {
+      var short = list.querySelector('.authors-short');
+      var full = list.querySelector('.authors-full');
+      var button = list.querySelector('.authors-toggle');
+      button.addEventListener('click', function () {
+        var expand = full.hidden;
+        full.hidden = !expand;
+        short.hidden = expand;
+        button.setAttribute('aria-expanded', expand ? 'true' : 'false');
+        button.textContent = expand ? 'Show fewer' : 'Show all ' + button.dataset.count + ' authors';
+      });
+    });
+  }
+
   /* --- Click fireworks (2D canvas port of the original WebGL version) ---- */
 
   var FIREWORK_PALETTES = {
@@ -273,5 +288,6 @@
   bindActiveNav();
   bindAbstracts();
   bindBibtex();
+  bindAuthorLists();
   bindFireworks();
 })();

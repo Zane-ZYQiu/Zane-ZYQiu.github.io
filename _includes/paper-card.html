@@ -1,17 +1,19 @@
 {% comment %}
   Publication card for the single-page homepage. Expects `post` (a
-  _publications document). Papers where the site author is first author, or
-  that set `co_first: true`, get the highlighted style. An optional
-  `author_note` is shown under the author list.
+  _publications document). In `authors`, a trailing `*` marks a co-first
+  author and renders as a superscript. Papers where the site author is first
+  or co-first author get the highlighted style. An optional `author_note` is
+  shown under the author list.
 {% endcomment %}
 {% include base_path %}
 {% assign paper_id = post.url | slugify %}
-{% assign first_author = post.authors | split: ',' | first | strip %}
+{% assign first_author = post.authors | split: ',' | first | remove: '*' | strip %}
 {% capture self_author %}<strong>{{ site.author.name }}</strong>{% endcapture %}
+{% capture self_co_first %}{{ site.author.name }}*{% endcapture %}
 {% assign primary_url = post.project_page | default: post.arxiv | default: post.paperurl | default: post.code %}
 {% assign abstract = post.content | markdownify | replace: '<strong>Abstract:</strong>', '' | replace: '<p>', '' | replace: '</p>', ' ' | strip %}
 
-<article class="paper-card{% if first_author == site.author.name or post.co_first %} paper-card-highlight{% endif %}">
+<article class="paper-card{% if first_author == site.author.name or post.authors contains self_co_first %} paper-card-highlight{% endif %}">
   {% if post.header.teaser %}
   <div class="paper-media">
     <img src="{{ base_path }}/images/{{ post.header.teaser }}" alt="{{ post.title | strip_html | escape }} teaser" loading="lazy" />
@@ -27,7 +29,23 @@
     </h3>
 
     {% if post.authors %}
-    <p class="paper-authors">{{ post.authors | replace: site.author.name, self_author }}</p>
+    {% assign author_list = post.authors | split: ', ' %}
+    {% assign author_count = author_list | size %}
+    {% if author_count > 6 %}
+      {% comment %} Long lists: show the first three plus the site author, expandable to the full list. {% endcomment %}
+      {% assign shown = 3 %}
+      {% assign self_idx = -1 %}
+      {% for a in author_list %}{% assign a_name = a | remove: '*' %}{% if a_name == site.author.name %}{% assign self_idx = forloop.index0 %}{% endif %}{% endfor %}
+      {% assign last_idx = author_count | minus: 1 %}
+      {% capture short_authors %}{% for a in author_list limit: shown %}{{ a }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% if self_idx >= shown %}, …, {{ author_list[self_idx] }}{% endif %}{% if self_idx < last_idx %}, …{% endif %}{% endcapture %}
+    <p class="paper-authors" data-authors>
+      <span class="authors-short">{{ short_authors | replace: site.author.name, self_author | replace: '*', '<sup>*</sup>' }}</span>
+      <span class="authors-full" hidden>{{ post.authors | replace: site.author.name, self_author | replace: '*', '<sup>*</sup>' }}</span>
+      <button type="button" class="authors-toggle" aria-expanded="false" data-count="{{ author_count }}">Show all {{ author_count }} authors</button>
+    </p>
+    {% else %}
+    <p class="paper-authors">{{ post.authors | replace: site.author.name, self_author | replace: '*', '<sup>*</sup>' }}</p>
+    {% endif %}
     {% if post.author_note %}<p class="paper-note">{{ post.author_note }}</p>{% endif %}
     {% endif %}
 

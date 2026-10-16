@@ -8,9 +8,7 @@ date: 2026-10-14
 venue: 'arXiv preprint'
 header:
   teaser: interlumina_u2_teaser.png
-authors: 'Qian Yu, Zongyang Qiu, Juncheng Yan, Hongliang Li, Qi Qin, et al.'
-co_first: true
-author_note: 'Co-first author'
+authors: 'Qian Yu*, Zongyang Qiu*, Juncheng Yan*, Hongliang Li*, Qi Qin*, Keqi Wang*, Siqi Luo, Junkui Ju, Yapeng Mi, Tiantian Lu, Tian Liu, Pengyu Xie, Chenhao Ji, Minghui Zhang, Yiang Zhao, Siyu Yan, Haiying Xu, Yanbo Wang, Jianghan Shen, Yuandong Pu, Jiayi Lei, Borui Zhang, Jinxin Shi, Bo Zhang, Yuhang Zang, Shenglong Ye, Lixin Gu, Hongjie Zhang, Linghan Liu, Xinyuan Chen, Yuewen Cao, Lihe Zhang, Xiaohong Liu, Junjun He, Qiangwei Liu, Qi Zhang, Yu Cheng, Tianfan Xue, Hui Xiong, Chang Xu, Yu Qiao, Yihao Liu, Bin Fu'
 arxiv: 'https://arxiv.org/abs/2610.20818'
 project_page: 'https://internlm.github.io/InternLumina-U2/'
 code: 'https://github.com/InternLM/InternLumina-U2'
