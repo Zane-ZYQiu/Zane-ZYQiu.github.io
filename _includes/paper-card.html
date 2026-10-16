@@ -1,7 +1,8 @@
 {% comment %}
   Publication card for the single-page homepage. Expects `post` (a
-  _publications document). Papers where the site author is first author get
-  the highlighted style.
+  _publications document). Papers where the site author is first author, or
+  that set `co_first: true`, get the highlighted style. An optional
+  `author_note` is shown under the author list.
 {% endcomment %}
 {% include base_path %}
 {% assign paper_id = post.url | slugify %}
@@ -10,7 +11,7 @@
 {% assign primary_url = post.project_page | default: post.arxiv | default: post.paperurl | default: post.code %}
 {% assign abstract = post.content | markdownify | replace: '<strong>Abstract:</strong>', '' | replace: '<p>', '' | replace: '</p>', ' ' | strip %}
 
-<article class="paper-card{% if first_author == site.author.name %} paper-card-highlight{% endif %}">
+<article class="paper-card{% if first_author == site.author.name or post.co_first %} paper-card-highlight{% endif %}">
   {% if post.header.teaser %}
   <div class="paper-media">
     <img src="{{ base_path }}/images/{{ post.header.teaser }}" alt="{{ post.title | strip_html | escape }} teaser" loading="lazy" />
@@ -27,6 +28,7 @@
 
     {% if post.authors %}
     <p class="paper-authors">{{ post.authors | replace: site.author.name, self_author }}</p>
+    {% if post.author_note %}<p class="paper-note">{{ post.author_note }}</p>{% endif %}
     {% endif %}
 
     <p class="paper-links">
