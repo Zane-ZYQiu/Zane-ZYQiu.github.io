@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>If GPT-6 Is Worth Following, Why Not Follow the Human Brain? · Zane Qiu</title>
+<meta name="description" content="Why I still want to work on intelligence that doesn't depend on language. 中文版：为什么我仍然想研究不依赖语言的智能。">
+<meta name="author" content="Zongyang (Zane) Qiu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="If GPT-6 Is Worth Following, Why Not Follow the Human Brain?">
+<meta property="og:description" content="Some recent thoughts on biological intelligence and intelligence without language. 中文版见页内切换。">
+<meta property="og:url" content="https://zane-zyqiu.github.io/essays/biological-intelligence/">
+<meta property="og:image" content="https://zane-zyqiu.github.io/essays/biological-intelligence/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Noto+Serif+SC:wght@400;600;700&display=swap">
+<style>
+:root{
+  color-scheme:light dark;
+  --bg:#f7f8fb; --paper:#ffffff; --ink:#1f2937; --body:#2f3b4b; --muted:#6b7280; --line:#e3e8f0;
+  --accent:#2259bc; --accent-soft:rgba(34,89,188,.09);
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  --serif-zh:"Noto Serif SC","Songti SC","STSong",serif;
+  --serif-en:"Source Serif 4",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0f1420; --paper:#151b29; --ink:#eef1f6; --body:#c9d0dc; --muted:#8a94a8; --line:#253047; --accent:#7aa7ff; --accent-soft:rgba(122,167,255,.12)}
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--body);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px}
+.top a{color:var(--muted);text-decoration:none}
+.top a:hover{color:var(--accent)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--paper)}
+.lang button{all:unset;cursor:pointer;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:500;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.lang button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+article{margin-top:56px}
+h1{color:var(--ink);font-weight:700;line-height:1.3;text-wrap:balance;margin:0 0 18px;letter-spacing:.01em}
+[lang="zh-CN"] h1{font-family:var(--serif-zh);font-size:clamp(28px,5.6vw,40px)}
+[lang="en"] h1{font-family:var(--serif-en);font-weight:600;font-size:clamp(28px,5.4vw,40px);letter-spacing:-.01em}
+.meta{color:var(--muted);font-size:14px;padding-bottom:28px;margin-bottom:36px;border-bottom:1px solid var(--line)}
+.meta a{color:inherit}
+p{margin:0 0 1.35em}
+[lang="zh-CN"] p{font-family:var(--serif-zh);font-size:18px;line-height:2;text-align:left}
+[lang="en"] p{font-family:var(--serif-en);font-size:19.5px;line-height:1.75}
+p.q{color:var(--ink);font-weight:600}
+.end{margin-top:48px;padding:20px 22px;border-radius:12px;background:var(--accent-soft);font-size:15px;line-height:1.7;color:var(--body)}
+.end a{color:var(--accent)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a href="/">← Zongyang (Zane) Qiu</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="en" aria-pressed="true">English</button>
+      <button type="button" data-set="zh" aria-pressed="false">中文</button>
+    </div>
+  </div>
+
+  <article id="zh" lang="zh-CN" hidden>
+    <h1>为什么我仍然想研究不依赖语言的智能</h1>
+    <div class="meta">Zane Qiu · 2026年10月25日</div>
+    <p>前两天跟一个朋友聊天，聊到后续的研究方向，我说我想探究怎么样实现完全基于vision的智能，或者说，不依赖语言的那种智能。</p>
+    <p>他说他的belief跟我不一样。他觉得language和code可以解决所有的问题。</p>
+    <p>实际上我并不认为这是一种“belief”，而是这种智能就在我们每个人的眼前，我无法不对此感兴趣。我也非常看好LLM能把很多问题解决得非常好，证据其实已经摆在眼前：大语言模型借助语言和代码，已经能做到非常多的事情。让它写几百行代码，就能搭出一个很炫酷的3D场景；给它接上机器人，它能写控制代码、调用底层的policy，完成真实的操作任务。</p>
+    <p>最典型的就是GPT-6 Astra。它9月份发布，OpenAI自己甚至没把它定位成机器人模型，但大家把它接到机器人上以后，好几个benchmark上都是断层第一。现在很多人都在想办法reproduce它的能力，虽然我们还不知道它具体用了什么trick、什么数据。</p>
+    <p>可是，就算这条路做得再好，有一个科学上最核心的问题不会被解决。</p>
+    <p>我们做Artificial Intelligence，说到底it's a science of intelligence。我们想要搞清楚智能形成的底层原理，并且try to reproduce it with human technology.</p>
+    <p>最近读了一些Core Cognition（核心认知）相关的理论，人类（以及很多动物）很早就带着几套非常基础的认知系统。婴儿还不会说话，就知道东西被挡住了不会凭空消失；猫从没学过物理，也能算准跳上柜子要用多大的劲；乌鸦会用树枝把虫子从洞里勾出来。它们都没有语言，但都有很强的智能，能对环境做出反应，也有真正意义上的cognition。</p>
+    <p>所以归根到底，LLM再强，这种智能是如何形成的，这个问题并不会自动被解决。</p>
+    <p>想想Hinton的伟大之处，不是他刷出了什么fancy的效果，也不是他的模型在某个benchmark上涨了多少个点。而是他几十年来一直坚持一件事：用类似大脑神经元的网络去做智能。很长一段时间里，这条路并不被看好，但他找到了训练这种网络的方法，最后让它涌现出了某种类似生物的智能。这是科学意义上的贡献。它告诉我们：向生物学习结构，是真的可以通向智能的。</p>
+    <p>今天的predict next token，是智能的一种模式，而且是非常强的一种。但它和生物的认知方式，终究是不一样的。</p>
+    <p class="q">那为什么生物的那种智能值得追求？</p>
+    <p>回到GPT-6 Astra。它在具身任务上太强了，以至于大家都开始follow它，想复现它。但我们别忘了：具身能力最强的，其实就是人类自己。拿起一个杯子、系鞋带、在拥挤的街上走路不撞到人，这些事人脑做得轻轻松松，功耗大概只有20瓦，很多时候根本不需要语言参与。在这件事上，人脑吊打现在所有的机器人模型。</p>
+    <p>正如GPT-6 Astra给我们展示了一条可以work的道路。虽然我们尚且还不完全清楚它是如何work的，但我们也尝试着去reproduce这种智能。God has also shown us that biological intelligence works, with extremely high performance and high efficiency. 我觉得没有任何理由我们不去follow、不去reproduce这种智能。</p>
+    <p>作为一个AI researcher，我更想回答后者：只靠看、听、只靠和世界交互，智能能不能从中涌现？它是如何涌现的？欢迎大家与我讨论看法！</p>
+    <div class="end">想聊聊的话，欢迎在小红书留言，或者通过<a href="/#meet">主页</a>上的方式联系我。</div>
+  </article>
+
+  <article id="en" lang="en">
+    <h1>If GPT-6 Is Worth Following, Why Not Follow the Human Brain?</h1>
+    <div class="meta">Zane Qiu · October 25, 2026</div>
+    <p>A couple of days ago I was chatting with a friend about where our research is headed next. I told him I want to figure out how to build intelligence that is purely vision-based, or, put another way, intelligence that doesn't depend on language.</p>
+    <p>He said his belief is different from mine. He thinks language and code can solve every problem.</p>
+    <p>Honestly, I don't think of this as a "belief." This kind of intelligence is right in front of every one of us, and I can't help being interested in it. I'm also very optimistic that LLMs can solve a lot of problems really well, and the evidence is already here: with language and code, large language models can do a huge range of things. Have one write a few hundred lines of code and you get a gorgeous 3D scene; hook it up to a robot and it can write control code, call a low-level policy, and finish real manipulation tasks.</p>
+    <p>The clearest example is GPT-6 Astra. It came out in September, and OpenAI didn't even position it as a robotics model, but once people plugged it into robots, it came first on several benchmarks by a wide margin. Now lots of people are trying to reproduce what it can do, even though we still don't know exactly what tricks or data went into it.</p>
+    <p>But however well this road goes, there is one question, the most central one scientifically, that it won't answer.</p>
+    <p>When we work on Artificial Intelligence, at the end of the day it's a science of intelligence. We want to understand the underlying principles of how intelligence comes about, and try to reproduce it with human technology.</p>
+    <p>Lately I've been reading about Core Cognition theory: humans (and many animals) come equipped very early with a few very basic cognitive systems. Babies who can't talk yet already know that a hidden object hasn't simply vanished. A cat has never studied physics, yet it knows exactly how hard to push off to land on top of a cabinet. Crows use twigs to hook bugs out of holes. None of them have language, but all of them are highly intelligent: they react to their environment, and they have cognition in the real sense of the word.</p>
+    <p>So in the end, no matter how strong LLMs get, the question of how this kind of intelligence forms won't get answered on its own.</p>
+    <p>Think about what made Hinton great. It wasn't some fancy demo, or how many points his model gained on a benchmark. It's that for decades he held onto one idea: building intelligence with networks that resemble the brain's neurons. For a long time few people believed in that path, but he found a way to train these networks, and in the end something like biological intelligence emerged from them. That is a scientific contribution. It tells us that learning structure from biology really can lead to intelligence.</p>
+    <p>Today's next-token prediction is one mode of intelligence, and a very powerful one. But it is still different from the way living things think.</p>
+    <p class="q">So why is biological intelligence worth pursuing?</p>
+    <p>Back to GPT-6 Astra. It's so strong at embodied tasks that everyone has started following it, trying to replicate it. But let's not forget: the most capable embodied agent is the human being. Picking up a cup, tying shoelaces, walking down a crowded street without bumping into anyone: the human brain does all of this effortlessly, on about 20 watts, and most of the time language isn't involved at all. On this front, the human brain beats every robot model out there.</p>
+    <p>GPT-6 Astra has shown us a path that works. We don't fully understand how it works yet, but we're still trying to reproduce it. God has also shown us that biological intelligence works, with extremely high performance and high efficiency. I don't see any reason not to follow it and reproduce it too.</p>
+    <p>As an AI researcher, I'd rather answer the deeper question: from nothing but seeing, hearing, and interacting with the world, can intelligence emerge? And how does it emerge? I'd love to hear what you think!</p>
+    <div class="end">If you'd like to talk about this, reach me through the contact options on my <a href="/#meet">homepage</a>.</div>
+  </article>
+</div>
+<script>
+(function(){
+  var titles={zh:"为什么我仍然想研究不依赖语言的智能 · Zane Qiu",en:"If GPT-6 Is Worth Following, Why Not Follow the Human Brain? · Zane Qiu"};
+  function setLang(l,push){
+    if(l!=="zh")l="en";
+    document.getElementById("zh").hidden=(l!=="zh");
+    document.getElementById("en").hidden=(l!=="en");
+    document.documentElement.lang=(l==="en"?"en":"zh-CN");
+    document.title=titles[l];
+    document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.set===l))});
+    if(push){try{var u=new URL(location.href);if(l==="zh")u.searchParams.set("lang","zh");else u.searchParams.delete("lang");history.replaceState(null,"",u)}catch(e){}}
+  }
+  document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.set,true);window.scrollTo({top:0})})});
+  var q=new URLSearchParams(location.search).get("lang");
+  setLang(q==="zh"?"zh":"en",false);
+})();
+</script>
+</body>
+</html>
