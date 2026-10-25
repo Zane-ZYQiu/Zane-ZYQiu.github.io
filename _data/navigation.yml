@@ -33,6 +33,9 @@ main:
   - title: "Meet"
     url: /#meet
 
+  - title: "Essays"
+    url: /essays/
+
   # - title: "Talks"
   #   url: /talks/
 
